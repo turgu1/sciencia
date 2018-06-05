@@ -1,0 +1,8 @@
+= simple_form_for(@attachment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :doc_file, as: :file, autofocus: true
+
+  .form-actions
+    = f.button :submit

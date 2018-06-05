@@ -1,0 +1,21 @@
+- table_name = controller_name.classify
+
+.legend_u= "Replacing [#{@old.caption}]"
+
+= simple_form_for :replacement, url: @exec_path, method: :post, remote: true do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :old_id, as: :hidden, input_html: { value: @old.id }
+    = f.input :new_id,
+      collection:   @old.class.all,
+      label:        "#{table_name.capitalize} to replace with",
+      value_method: :id,
+      label_method: :caption,
+      input_html:   { class: 'large-field' }
+    = f.input :delete_after, as: :boolean, hint: "The old #{table_name.downcase} will be deleted after replacement."
+
+  .form-actions
+    = f.button :submit, "Do Replace", :confirm => "Replacing #{table_name} with selected item. Are-you sure?"
+
+= remote_link_to 'Back', @return_path

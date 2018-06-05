@@ -1,0 +1,12 @@
+= simple_form_for(@organisation, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name,         input_html: { class: 'large-field' }, autofocus: true
+    = f.input :abbreviation, input_html: { class: 'small-field' }
+    = f.input :order,        input_html: { class: 'small-field' }
+    = f.input :other
+    = f.input :people_count, input_html: { class: 'small-field' }
+
+  .form-actions
+    = f.button :submit

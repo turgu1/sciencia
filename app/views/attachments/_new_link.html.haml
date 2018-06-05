@@ -1,0 +1,4 @@
+= remote_link_to('<i class="fa fa-plus fa fa-white"></i>'.html_safe,
+    new_attachment_path,
+    class: 'btn btn-xs btn-primary',
+    title: 'Add a new Attachment') if can? :create, Attachment

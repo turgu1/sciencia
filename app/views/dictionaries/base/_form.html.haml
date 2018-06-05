@@ -1,0 +1,8 @@
+= simple_form_for(@item, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :caption, :input_html => { :class => 'large-field' }, :autofocus => true
+
+  .form-actions
+    = f.button :submit

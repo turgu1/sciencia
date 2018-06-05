@@ -1,0 +1,12 @@
+.legend_u
+  #{@event.description}
+  = render partial: 'edit_link', object: @event
+
+= show_entry @event do |e|
+  = e.field :description
+  = e.field :month
+  = e.field :year
+  = e.field :author
+  = e.field :document
+
+= remote_link_to 'Back', events_path

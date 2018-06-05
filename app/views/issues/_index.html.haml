@@ -1,0 +1,33 @@
+.legend
+  <i class="fa fa-lightbulb-o"></i> Issues / Ideas
+  = render 'new_link'
+
+%ul.nav.nav-pills
+  %li.active= link_to "#{Issue.open.count} Open",  '#open',  'data-toggle' => :pill
+  %li=        link_to "#{Issue.close.count} Close", '#close', 'data-toggle' => :pill
+
+.tab-content
+
+  #open.tab-pane.active
+    %table#open-table.dtable{ data: { source: issues_path(format: :json, state: 'Open'), sort_column: 4, sort_order: 'desc' } }
+      %thead
+        %tr
+          %th.hleft Title
+          %th.hcenter State
+          %th.hcenter Type
+          %th.hcenter User
+          %th.datetime Last Update
+          %th.no-print.no-sort.no-wrap
+      %tbody
+
+  #close.tab-pane
+    %table#close-table.dtable{ data: { source: issues_path(format: :json, state: 'Close'), sort_column: 4, sort_order: 'desc' } }
+      %thead
+        %tr
+          %th.hleft Title
+          %th.hcenter State
+          %th.hcenter Type
+          %th.hcenter User
+          %th.datetime Last Update
+          %th.no-print.no-sort.no-wrap
+      %tbody

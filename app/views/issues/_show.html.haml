@@ -1,0 +1,26 @@
+.row
+  .col-md-8
+    .legend_u.row
+      .col-md-9
+        Issue #{@issue.title}
+        = render partial: 'edit_link', object: @issue
+        = remote_link_to 'Show', issue_path(@issue, modal: true), class: 'btn btn-xs btn-info'
+        = remote_link_to 'Issues', issues_path, class: 'smalll'
+      .col-md-3
+        .pull-right
+          State:&nbsp;&nbsp;
+          = "<b>#{h(@issue.state)}</b>".html_safe
+          = link_to((@issue.state == 'Open' ? 'Close' : 'Open'), |
+              state_change_issue_path(@issue, state: (@issue.state == 'Open' ? 'Close' : 'Open')), |
+              class: 'btn btn-xs btn-primary', |
+              method: :post, |
+              remote: true) if can? :manage, @issue |
+
+.row
+  .col-md-8
+    - comment = Comment.new(issue_id: @issue.id, user: current_user)
+    = render partial: 'comments/form', object: comment, locals: { issue: @issue }
+%br/
+= render partial: 'comments/index', object: @issue.comments
+
+= remote_link_to 'Back', issues_path

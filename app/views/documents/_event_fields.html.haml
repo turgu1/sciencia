@@ -1,0 +1,13 @@
+%tr.fields.nested-fields
+  / = f.hidden_field :id
+  %td.max-width
+    = f.text_field :description, class: 'max-width form-control'
+  %td
+    = f.select(:author_id, @document.authors.collect { |a| [ a.name, a.id] },
+      { include_blank: false }, { class: 'medium-field form-control' })
+  %td.hcenter
+    = f.select :year, years_collection, { include_blank: false }, { class: 'small-field form-control' }
+  %td.hcenter
+    = f.select :month, months_collection, { include_blank: false }, { class: 'medium-field form-control' }
+  %td.vcenter
+    = link_to_remove_association('Remove', f).html_safe

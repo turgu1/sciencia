@@ -1,0 +1,11 @@
+%table#people.dtable{ data: { source: organisation_people_path(@organisation, format: :json), sort_column: 0, sort_order: 'asc' } }
+  %thead
+    %tr
+      %th.hleft Last name
+      %th.hleft First name
+      %th.hcenter Email
+      %th.hcenter Phone
+      %th.hcenter Pub. Count
+      %th.no-sort.buttons
+
+  %tbody

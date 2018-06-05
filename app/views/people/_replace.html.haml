@@ -1,0 +1,24 @@
+- table_name = controller_name.classify
+
+.legend_u= "Replacing [#{@old.caption}]"
+
+= simple_form_for :replacement, url: @exec_path, method: :post, remote: true do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :old_id, as: :hidden, input_html: { value: @old.id }
+    = f.input :target_person,                                                            |
+        label: "<i class='fa fa-magic'></i>&nbsp;&nbsp;Person to replace with".html_safe, |
+        input_html: {                                                                    |
+          class: 'typeahead col-md-6',                                                   |
+          path: url_for(                                                                 |
+            controller: :people,                                                         |
+            action: :index,                                                              |
+            format: :json                                                                |
+          )}                                                                             |
+    = f.input :delete_after, as: :boolean, hint: "The old #{table_name.downcase} will be deleted after replacement."
+
+  .form-actions
+    = f.button :submit, "Do Replace", :confirm => "Replacing #{table_name} with selected item. Are-you sure?"
+
+= remote_link_to 'Back', @return_path

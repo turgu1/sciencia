@@ -1,0 +1,61 @@
+.modal-header
+  %button.close{ :type => "button", 'data-dismiss' => "modal", 'aria-hidden' => true} &times;
+  %h4
+    #{title}
+.modal-body
+
+  %ul.nav.nav-tabs
+    %li.active= link_to '<b>ATTRIBUTES</b>'.html_safe,                             '#mod_attributes',  'data-toggle' => :tab
+    %li=        link_to "<b>EVENTS (#{@document.events.count})</b>".html_safe,     '#mod_events',      'data-toggle' => :tab
+    %li=        link_to "<b>FILES (#{@document.attachments.count})</b>".html_safe, '#mod_attachments', 'data-toggle' => :tab
+
+  .tab-content
+    #mod_attributes.tab-pane.active
+      - if fields.nil?
+        %span= 'No field defined'
+      - else
+        = show_entry @document do |e|
+          - fields.each do |f|
+            = e.field f
+
+    #mod_events.tab-pane
+      %table
+        %colgroup
+          %col.hleft.fill
+          %col.hcenter.no-wrap
+          %col.hcenter.no-wrap
+        %thead
+          %tr
+            %th Description
+            %th Presenter
+            %th When
+        %tbody
+          - @document.events.each do |ev|
+            %tr
+              %td #{ev.description}
+              %td #{ev.author.person.short_name.html_safe}
+              %td #{ev.date}
+
+      - if @document.events.count == 0
+        %p <b>No event defined for this document.</b>
+
+    #mod_attachments.tab-pane
+      %table
+        %thead
+          %tr
+            %th.hleft.fill File
+            %th.hcenter.no-wrap DateTime
+            %th
+        %tbody
+          - @document.attachments.each do |att|
+            %tr
+              %td #{File.basename(att.doc_file.current_path)}
+              %td.hcenter.no-wrap #{att.date_time}
+              %td.hcenter.no-wrap= download_action(att)
+
+      - if @document.attachments.count == 0
+        %p <b>No attachment defined for this document.</b>
+
+.modal-footer
+  = link_to 'OK', local_assigns.has_key?(:return_to) ? return_to : '#', remote: true, 'data-dismiss' => "modal", :class => 'btn btn-primary'
+

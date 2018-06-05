@@ -1,0 +1,16 @@
+.legend_u
+  #{@document_type.caption}
+  = render partial: 'edit_link', object: @document_type
+
+= show_entry @document_type do |e|
+  = e.field :caption
+  = e.field :abbreviation
+  = e.field :order
+  = e.field :synonyms
+  = e.field :field_list
+  = e.field :report_field_list
+  = e.field :hidden_author
+  = e.field :peer_review_document_sub_category
+  = e.field :no_peer_review_document_sub_category
+
+= remote_link_to 'Back', document_types_path

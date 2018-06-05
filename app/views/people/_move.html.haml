@@ -1,0 +1,20 @@
+.legend_u= "Moving [#{@person.complete_name}] from #{@person.organisation.name}"
+
+= simple_form_for :move, url: do_move_person_path(@person), method: :post, remote: true do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :person_id, as: :hidden, input_html: { value: @person.id }
+    = f.input :target_org_abbreviation,                                                |
+        label: "<i class='fa fa-magic'></i>&nbsp;&nbsp;Target Org".html_safe, |
+        input_html: {                                                        |
+          class: 'typeahead col-md-6',                                          |
+          path: url_for(                                                     |
+            controller: :organisations,                                      |
+            action: :index,                                                  |
+            format: :json                                                    |
+          )}                                                                 |
+  .form-actions
+    = f.button :submit, "Do Move", :confirm => "Moving #{@person.complete_name_with_org} to selected organisation. Are-you sure?"
+
+= remote_link_to 'Back', organisation_path(@person.organisation)

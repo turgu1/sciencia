@@ -1,0 +1,13 @@
+.legend
+  = render 'new_link'
+  Peer Reviews
+
+%table.dtable{ data: { source: peer_reviews_path(format: :json), sort_column: 2, sort_order: 'asc' } }
+  %thead
+    %tr
+      %th.hleft Caption
+      %th.hcenter Abbreviation
+      %th.hcenter Order
+      %th.no-sort.buttons
+
+  %tbody

@@ -1,0 +1,12 @@
+= simple_form_for(@event, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description, autofocus: true
+    = f.input :month
+    = f.input :year
+    = f.association :author
+    = f.association :document
+
+  .form-actions
+    = f.button :submit

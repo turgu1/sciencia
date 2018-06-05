@@ -1,0 +1,10 @@
+en:
+  simple_form:
+    options:
+      user:
+        roles:
+          admin: Admin
+          pilot: Pilot
+          mgr: Manager
+          user: User
+          dba: DBA

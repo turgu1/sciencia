@@ -1,0 +1,20 @@
+.row
+  .col-md-8
+    - @issue.comments.each do |comment|
+      .panel.panel-info
+        .panel-heading
+          <b>#{comment.user.try(:username)}</b>&nbsp;#{delete_action(comment, "#{comment.comment[0..15]}...")}
+          .pull-right
+            #{comment.entry_time.getlocal.strftime("%F %T")}
+        .panel-body
+          #{comment.comment.html_safe}
+
+/ %table.dtable{ 'data-source' => issue_comments_path(@issue, format: :json) }
+/   %thead
+/     %tr
+/       %th.hleft Comment
+/       %th.hcenter User
+/       %th.hcenter.no-wrap Entry time
+/       %th.no-print.no-sort.no-wrap
+
+/   %tbody

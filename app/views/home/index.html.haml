@@ -1,0 +1,35 @@
+.jumbotron
+  %h1 Sciencia
+  %p Publication List Management Tool <b>Version 2.1</b>
+  %hr/
+  %p Welcome! Have fun using this application!
+  %p To access your own publication list, click on your <b>[username]</b> located on the left part of the navigation bar above.
+
+.row
+
+  .col-md-6
+    - unless Rails.env.production?
+      .alert.alert-danger
+        %h4 NO DATA WILL BE RETAINED!!
+        This is a trial version. You can play with it and report any malfunction/ideas for
+        improvement using the <b>Issues/Ideas</b> menu entry above.
+
+    .alert.alert-warning
+      %h4 Please Note!
+      This system is <b><u>not</u></b> allowed to contain any classified data.
+      Please ensure that
+      all information pertaining to your publications are presented with
+      appropriate non-sensitive data.
+
+    /[if lt IE 9]
+      .alert.alert-warning
+        %h4 Warning!
+        This version of Internet Explorer is not appropriate for use with this application.
+        You may encounter various discrepancies in your interaction with Sciencia.
+        Please update your browser to version 9 or later.
+
+    %noscript
+      .alert.alert-danger
+        %h4 Error!
+        Please enable JavaScript to use this application. Sciencia cannot be used
+        without JavaScript enabled in your browser.

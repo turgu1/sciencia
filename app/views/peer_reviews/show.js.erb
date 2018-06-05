@@ -1,0 +1,12 @@
+replace_content(
+    '#modal-info',
+    "<%= j(render(
+            :partial => 'show_modal',
+            :object => @peer_review,
+            :locals => {
+                :title => @peer_review.caption,
+                :return_to => peer_reviews_path,
+                :fields => [:caption, :abbreviation, :order]})) %>");
+
+$('#modal-dialog').modal({ backdrop: false });
+

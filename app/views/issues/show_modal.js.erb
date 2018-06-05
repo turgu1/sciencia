@@ -1,0 +1,12 @@
+replace_content(
+    '#modal-info',
+    "<%= j(render(
+            :partial => 'show_modal',
+            :object => @issue,
+            :locals => {
+                :title => @issue.title,
+                :fields => [:state, :issue_type, :user, :last_update]
+            })) %>");
+$('#modal-dialog').modal({ backdrop: false });
+
+

@@ -1,0 +1,15 @@
+= simple_form_for(@issue, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :state, as: :hidden 
+    = f.input :title, autofocus: true, input_html: { class: 'large-field' }, autofocus: true
+    = f.input :issue_type, collection: Issue.issue_types, include_blank: false
+
+    -# The issue.new controller must have generated on clear comment to be
+    -# filled by the user
+    = f.simple_fields_for :comments do |ff|
+      = ff.input :comment, as: :text
+
+  .form-actions
+    = f.button :submit

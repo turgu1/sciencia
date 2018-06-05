@@ -1,0 +1,5 @@
+.legend_u Editing #{controller_name.singularize.titleize}
+
+= render 'form'
+
+= remote_link_to 'Back', url_for(controller: controller_name, action: :index)

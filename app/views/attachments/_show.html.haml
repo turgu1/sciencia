@@ -1,0 +1,15 @@
+.legend_u
+  = render partial: 'edit_link', object: @attachment
+  #{@attachment.document}
+
+= show_entry @attachment do |e|
+  = e.field :document
+  = e.field :content_type
+  = e.field :filename
+  = e.field :thumbnail
+  = e.field :size
+  = e.field :width
+  = e.field :height
+  = e.field :erased
+
+= remote_link_to 'Back', attachments_path

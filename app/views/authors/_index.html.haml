@@ -1,0 +1,14 @@
+.legend
+  Authors
+  = render 'new_link'
+
+%table.dtable{ 'data-source' => authors_path(format: :json) }
+  %thead
+    %tr
+      %th.hleft Person
+      %th.hcenter Main author
+      %th.hcenter Hidden
+      %th.hcenter Order
+      %th.no-sort.buttons
+
+  %tbody

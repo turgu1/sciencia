@@ -1,0 +1,11 @@
+%table#documents.dtable{ data: { source:  documents_path(format: :json, parent_klass: parent_klass, parent_id: parent_id, modal: true), sort_column: 5, sort_order: 'desc' } }
+  %thead
+    %tr
+      %th.hcenter{ title: '*shift-click* for secondary ordering.' }= 'Type'
+      %th.hcenter{ title: '*shift-click* for secondary ordering.' } Category
+      %th.small-field{ title: '*shift-click* for secondary ordering.' }= 'Reference'
+      %th{ title: '*shift-click* for secondary ordering.' }= 'Title'
+      %th.no-sort= 'Authors'
+      %th.hcenter{ title: '*shift-click* for secondary ordering.' }= 'Date'
+
+  %tbody

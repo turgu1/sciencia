@@ -1,0 +1,50 @@
+%ul
+  - @document.errors.messages.each do |key, msgs|
+    %li= "#{key} #{msgs.join(' | ')}"
+
+= simple_form_for(@document, remote: true, html: { id: 'document-form' }) do |f|
+  = f.error_notification
+
+  = hidden_field_tag :parent_klass, @parent.class.name
+  = hidden_field_tag :parent_id,    @parent.id
+
+  .form-inputs
+    %ul.nav.nav-tabs
+      %li.active= link_to '<b>ATTRIBUTES</b>'.html_safe, '#attributes', 'data-toggle' => :tab
+      %li=        link_to "<b>EVENTS (#{@document.events.count})</b>".html_safe,     '#events',      'data-toggle' => :tab
+      %li=        link_to "<b>FILES (#{@document.attachments.count})</b>".html_safe, '#attachments', 'data-toggle' => :tab
+
+    -#.tab-content{ style: 'height: 450px' }
+    .tab-content
+      #attributes.tab-pane.active
+        = f.association :document_type, label_method: :caption, include_blank: false,          |
+            collection: DocumentType.order('"order" ASC'),                                     |
+            input_html: {                                                                      |
+              id: 'type-selector',                                                             |
+              change_path: url_for(controller: :document_types, action: :change, format: :js), |
+              class: 'large-field' }
+
+        #input-fields
+          = render partial: 'fields', object: f
+
+      #events.tab-pane
+        -# Events can be entered only after the document has been created
+        - if @document.id.nil?
+          %h4 Events definition will be available once the document created.
+        - else
+          #event-fields
+            = render partial: 'events_table', object: f
+
+      #attachments.tab-pane
+        -# Attachments can be entered only after the document has been created
+        - if @document.id.nil?
+          %h4 Attachments definition will be available once the document created.
+        - else
+          #attachment-fields
+            -#= render partial: 'attachments_table', object: f
+
+  .form-actions
+    = f.button :submit
+
+  .fields-to-show
+    = render :partial => 'document_types/document_type_list', :object => @document.document_type

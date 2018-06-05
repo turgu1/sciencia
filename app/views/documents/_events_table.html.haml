@@ -1,0 +1,20 @@
+.form-group
+  %label.string.required.control-label.col-md-3= 'Events'
+  .controls.col-md-9
+    %table#events-table.events-table.manual-zebra.nested-container
+      %thead
+        %tr
+          %th
+            = 'Description'
+          %th.hcenter
+            = "Presenter".html_safe
+          %th.hcenter.small-field
+            = 'Year'
+          %th.hcenter.medium-field
+            = 'Month'
+          %th
+      %tbody#events-list
+        = events_table.simple_fields_for :events, wrapper: false do |event|
+          = render "event_fields", f: event
+
+      %caption= link_to_add_association('Add', events_table, :events, 'data-association-insertion-node': '#events-list', 'data-association-insertion-method': 'append')

@@ -1,0 +1,6 @@
+en:
+  security_classifications:
+    new_legend: New Security Classification
+    edit_legend: Editing Security Classification
+    index_legend:  Listing Security Classifications
+    new: New Security Classification

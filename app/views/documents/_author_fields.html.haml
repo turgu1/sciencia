@@ -1,0 +1,24 @@
+%tr.nested-fields.fields{ class: "#{(f.object.hidden && ! can?(:manage_hidden, Author)) ? 'hidden' : ''}"}
+  = f.hidden_field :id
+  - unless can? :manage_hidden, Author
+    = f.hidden_field :order,  as: :hidden
+    = f.hidden_field :hidden, as: :hidden
+  %td
+    = f.text_field :name,
+      class: "string typeahead form-control #{'error' unless f.object.errors.messages[:name].blank?} set_focus",
+      path: url_for(controller: :people, action: :index, format: :json),
+      data: { toggle: 'tooltip',
+              html: true },
+      title: '<b>Author formats: </b><ul><li>LastName, FirstName (ORG)</li><li>FirstName LastName (ORG)</li></ul><p><i>(ORG)</i> is optional.</p>'.html_safe
+    = "<p class='text-error'>#{f.object.errors.messages[:name].join(%Q{<br/>})}</p>".html_safe unless f.object.errors.messages[:name].blank?
+  %td.hcenter.vcenter
+    = f.check_box :main_author
+  - if can? :manage_hidden, Author
+    %td.hcenter.vcenter
+      = f.number_field :order, class: 'small-field form-control'
+    %td.hcenter.vcenter
+      = f.check_box :hidden
+  %td.vcenter.hright
+    = (link_to(raw('<i class="fa fa-arrow-up"></i>&nbsp;|&nbsp;'),'#', class: :up) +      |
+       link_to(raw('<i class="fa fa-arrow-down"></i>&nbsp;|&nbsp;'), '#', class: :down) + |
+       link_to_remove_association('Remove', f).html_safe)                                 |

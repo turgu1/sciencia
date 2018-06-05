@@ -1,0 +1,14 @@
+= simple_form_for(@document_sub_category, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :caption,      :input_html => { :class => 'large-field' }, autofocus: true
+    = f.input :abbreviation, :input_html => { :class => 'small-field' }
+    = f.input :order,        :input_html => { :class => 'small-field' }
+    = f.association :translation, :label_method => :full_caption, :include_blank => true, :input_html => { :class => 'large-field' }
+    = f.association :document_category, :label_method => :full_caption, :include_blank => false, :input_html => { :class => 'large-field' }
+    = f.input :peer_review_required
+    = f.input :sl,      label: 'SL'
+
+  .form-actions
+    = f.button :submit

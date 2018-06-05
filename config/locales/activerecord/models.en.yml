@@ -1,0 +1,61 @@
+en:
+  activerecord:
+    models:
+      attachment:
+        one: Attachment
+        other: Attachments
+      author:
+        one: Author
+        other: Auhors
+      document:
+        one: Document
+        other: Documents
+      document_category:
+        one: Document Category
+        other: Document Categories
+      document_sub_category:
+        one: Document Sub Category
+        other: Document Sub Categories
+      document_type:
+        one: Document Type
+        other: Document Types
+      editor:
+        one: Editor
+        other: Editors
+      event:
+        one: Event
+        other: Events
+      institution:
+        one: Institution
+        other: Institutions
+      journal:
+        one: Journal
+        other: Journals
+      language:
+        one: Language
+        other: Languages
+      org:
+        one: Organisation
+        other: Organisations
+      organisation:
+        one: Section
+        other: Sections
+      peer_review:
+        one: Peer Review
+        other: Peer Reviews
+      person:
+        one: Person
+        other: People
+      publisher:
+        one: Publisher
+        other: Publishers
+      school:
+        one: School
+        other: Schools
+      security_classification:
+        one: Security Classification
+        other: Security Classifications
+      user:
+        one: User
+        other: Users
+

@@ -1,0 +1,22 @@
+en:
+  application:
+    labels:
+      about: About
+      account_parameters: Account Parameters
+      config: Config
+      logout: Logout
+      name: Sciencia
+      others: Others
+      pilot_tables: Pilot Tables
+      statistics: Statistics
+      to_replace_with: "%{table_name} to replace with"
+
+    msg:
+      full_name: "This is Sciencia: Publication List Management Tool V2.0"
+      no_document: "There is no document in the list!!"
+      replacing: "Replacing %{table_name} [%{caption}] in documents table"
+      replace_delete_hint: "The old %{table_name} will be deleted after replacement."
+      to_replace_sure: "Replacing documents with selected %{table_name}, are-you sure?"
+      unknown_field: "UNKNOWN FIELD: %{field_name}!!"
+      welcome: "Welcome! Have fun using this application!"
+      written_using: "Written using Ruby on Rails V3"

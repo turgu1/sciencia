@@ -1,0 +1,11 @@
+.legend_u
+  .row
+    .col-md-4
+      #{@person.complete_name}
+      = render partial: 'edit_link', object: @person
+      = remote_link_to 'Show', person_path(@person, modal: true), class: 'btn btn-xs btn-info'
+      = remote_link_to 'Org', organisation_path(@person.organisation), class: 'smalll'
+    .col-md-8
+      = render 'documents_info_links'
+
+= render :partial => 'documents/index', locals: { parent_klass: 'Person', parent_id: @person.id }

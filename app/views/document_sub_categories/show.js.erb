@@ -1,0 +1,13 @@
+replace_content(
+    '#modal-info',
+    "<%= j(render(
+            :partial => 'show_modal',
+            :object => @document_sub_category,
+            :locals => {
+                :title => @document_sub_category.caption,
+                :return_to => document_sub_categories_path,
+                :fields => [:caption, :abbreviation, :order, :translation,
+                            :document_category, :peer_review_required, :sl]})) %>");
+
+$('#modal-dialog').modal({ backdrop: false });
+

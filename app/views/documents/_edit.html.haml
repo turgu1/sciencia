@@ -1,0 +1,7 @@
+.legend_u Editing Document
+
+= render 'form'
+
+= remote_link_to 'Back', url_for( |
+    controller: @parent.class.name.underscore.pluralize, |
+    action: :show, id: @parent.id) |

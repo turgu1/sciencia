@@ -1,0 +1,15 @@
+= simple_form_for([issue, form], wrapper: false, remote: true) do |f|
+  .panel.panel-primary
+    .panel-heading
+      <b>#{form.user.try(:username) || 'User Unknown'}</b>
+      .pull-right
+        New Comment
+    .panel-body
+      = f.error_notification
+
+      .form-inputs
+        = f.input_field :comment, autofocus: true, class: :comment
+        = f.input :issue_id, as: :hidden
+        %br/
+        %br/
+        = f.button :submit, 'Add Comment'

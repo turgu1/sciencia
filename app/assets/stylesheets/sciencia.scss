@@ -1,0 +1,326 @@
+// To keep room for the upper navbar
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.jumbotron h1 {
+  font-weight: bold;
+}
+
+.form-actions {
+  padding-left: 8px;
+}
+
+// To pad the sidebar
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+.nav.nav-tabs {
+  margin-bottom: 20px;
+}
+
+// To set the max hight of a side pane
+
+.side-pane {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.bigg {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.smalll {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tinyy {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 40px;
+  color: #333;
+  border: 0;
+}
+
+.legend_u {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: 21px;
+  line-height: 40px;
+  color: #333;
+  border: 0;
+  margin-bottom: 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #505050;
+}
+
+textarea {
+  // width: 90% ! important;
+  height: 10em ! important;
+}
+
+.show-label {
+  font-weight: bold;
+  text-align: right;
+  float: left;
+  width: 170px;
+  padding-right: 10px;
+}
+
+.show-value {
+  display: inline;
+}
+
+.huge-field {
+  width: 90%;
+}
+
+.large-field {
+  width: 30em;
+}
+
+.medium-field {
+  width: 15em;
+}
+
+.small-field {
+  width: 6em;
+}
+
+.auto-field {
+  width: auto;
+}
+
+.help-block {
+  //display: inline;
+  //padding-left: 20px;
+  font-style: italic;
+}
+
+area {
+  z-index: 20;
+}
+
+.hcenter {
+  text-align: center !important;
+}
+
+.hleft {
+  text-align: left !important;
+}
+
+.hright {
+  text-align: right !important;
+}
+
+.fill {
+  width: 90%;
+}
+
+th {
+  vertical-align: bottom ! important;
+}
+
+.hidden {
+  display: none ! important;
+}
+
+.rer-report {
+  font-family: "Times New Roman";
+}
+
+.rer-report .category {
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.rer-report .sub-category {
+  font-size: 12pt;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.rer-report .doc {
+  font-size: 10pt;
+  margin-top: 6pt;
+  list-style-type: none;
+}
+
+.hang tbody th, td {
+  border: 0 none ! important;
+}
+
+.hang tbody tr td.idx {
+  width: 15px;
+  padding-left: 0px;
+  vertical-align: text-top ! important;
+}
+
+.hang ul {
+  margin-top: 0.5em;
+}
+
+.authors-table {
+  width: auto ! important;
+}
+
+.events-table {
+  width: auto ! important;
+}
+
+table caption {
+  caption-side: bottom;
+  text-align: left;
+  padding-left: 8px;
+}
+
+td.vcenter {
+  vertical-align: middle ! important;
+}
+
+td.hright {
+  text-align: right;
+}
+
+tr.alt {
+  background-color: #F9F9F9;
+}
+
+.fields-to-show {
+  display: none;
+}
+
+.typeahead {
+  margin-top: 0px;
+}
+
+.max-width {
+  width: 96%;
+}
+
+a.up:hover, a.down:hover {
+  text-decoration: none;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.dropdown-menu.multi-column {
+  width: 600px;
+}
+
+.dropdown-menu.multi-column .dropdown-menu {
+  display: block !important;
+  position: static !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+td input.error {
+  border-color: #b94a48;
+  color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+textarea.comment {
+  width: 95%;
+  min-height: 10em;
+  resize: vertical;
+}
+
+.tooltip {
+  width: 300px !important;
+}
+
+// body .modal {
+//   /* new custom width */
+//   width: 800px;
+//   /* must be half of the width, minus scrollbar on the left (30px) */
+//   margin-left: -370px;
+// }
+
+.dropdown-submenu {
+  position:relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top:0;
+  left:100%;
+  margin-top:-6px;
+  margin-left:-1px;
+  -webkit-border-radius:0 6px 6px 6px;
+  -moz-border-radius:0 6px 6px 6px;
+  border-radius:0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display:block;
+}
+
+.dropdown-submenu>a:after {
+  display:block;
+  content:" ";
+  float:right;
+  width:0;
+  height:0;
+  border-color:transparent;
+  border-style:solid;
+  border-width:5px 0 5px 5px;
+  border-left-color:#cccccc;
+  margin-top:5px;
+  margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color:#ffffff;
+}
+
+.dropdown-submenu.pull-left {
+  float:none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left:-100%;
+  margin-left:10px;
+  -webkit-border-radius:6px 0 6px 6px;
+  -moz-border-radius:6px 0 6px 6px;
+  border-radius:6px 0 6px 6px;
+}
+
+select, option {
+  -webkit-appearance : none; /* To gain control over the appearance on WebKit/Chromium */
+  -moz-appearance : none; /* To gain control over the appearance on Gecko */
+
+  /* To gain control over the appearance on and Trident (IE)
+     Note that it also works on Gecko and has partial effects on WebKit */
+  background : none;
+}
+
+select.form-control {
+    padding-right: 25px;
+    background-image: url("data:image/svg+xml,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 1200 1000' fill='rgb(51,51,51)'> <path d='M1100 411l-198 -199l-353 353l-353 -353l-197 199l551 551z'/> </svg>");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 7px) 50%;
+    -moz-appearance: none;
+    appearance: none;
+}

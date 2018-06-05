@@ -1,0 +1,6 @@
+en:
+  users:
+    new: New User
+    index_legend: Listing Users
+    new_legend: New User
+    edit_legend: Editing User

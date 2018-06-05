@@ -1,0 +1,17 @@
+.legend
+  Document Sub Categories
+  = render 'new_link'
+
+%table.dtable{ data: { source: document_sub_categories_path(format: :json), sort_column: 2, sort_order: 'asc' } }
+  %thead
+    %tr
+      %th.hleft Caption
+      %th.hcenter Abbreviation
+      %th.hcenter Order
+      %th.hcenter.no-sort Category
+      %th.hcenter Peer rev.
+      %th.hcenter Sl
+      %th.hcenter.no-sort Translation
+      %th.no-sort.buttons
+
+  %tbody

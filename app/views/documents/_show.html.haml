@@ -1,0 +1,10 @@
+.legend_u
+  #{@document.title}
+  = render partial: 'edit_link', object: @document
+
+= show_entry @document do |e|
+  = e.field :document_type
+  - @document.document_type.fields_sym_list.each do |f|
+    = e.field f
+
+= remote_link_to 'Back', documents_path(parent_klass: @parent.class.name, parent_id: @parent.id)

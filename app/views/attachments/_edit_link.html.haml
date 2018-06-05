@@ -1,0 +1,4 @@
+= remote_link_to('<i class="fa fa-edit fa fa-white"></i>'.html_safe,
+    edit_attachment_path(edit_link),
+    class: 'btn btn-xs btn-primary',
+    title: 'Edit Attachment Attributes') if can? :update, edit_link

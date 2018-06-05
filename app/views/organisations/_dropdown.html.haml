@@ -1,0 +1,28 @@
+- Organisation.main.ordered.each do |org|
+  %li= remote_link_to org.abbreviation, organisation_path(org)
+%li.dropdown-submenu
+  %a{ href: '#' } Others
+  .dropdown-menu.multi-column
+    .container-fluid
+      .row
+        - liste = Organisation.others.ordered
+        - count = liste.size
+        - per_column = (count + 2) / 3
+        .col-md-4
+          %ul.dropdown-menu
+            - if liste.size > 0
+              - liste[0..(per_column-1)].each do |org|
+                %li= remote_link_to org.abbreviation, organisation_path(org)
+        .col-md-4
+          %ul.dropdown-menu
+            - if liste.size > 1
+              - liste[per_column..((per_column*2)-1)].each do |org|
+                %li= remote_link_to org.abbreviation, organisation_path(org)
+        .col-md-4
+          %ul.dropdown-menu
+            - if liste.size > 2
+              - liste[(per_column*2)..-1].each do |org|
+                %li= remote_link_to org.abbreviation, organisation_path(org)
+
+%li.divider
+%li= remote_link_to 'List', organisations_path

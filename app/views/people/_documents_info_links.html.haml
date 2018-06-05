@@ -1,0 +1,36 @@
+.legend
+  %span#document-count
+    #{@person.documents.size}&nbsp;Documents&nbsp;
+  = new_action(Document,
+      { title: 'Add a new document' },
+      { parent_klass: 'Person',
+        parent_id: @person.id })
+  = link_to 'Word Format',
+      publication_list_person_path(@person, :the_format => :rtf),
+      :class => :smalll,
+      :remote => true
+  %span.smalll
+    \|
+  = link_to 'HTML Format',
+      publication_list_person_path(@person, :the_format => :html),
+      :class => :smalll,
+      :remote => true
+  %span.smalll
+    \|
+  = link_to 'BibTeX Format',
+      publication_list_person_path(@person, :the_format => :bib),
+      :class => :smalll,
+      :remote => true
+  %span.smalll
+    \|
+  = link_to 'XML Format',
+      publication_list_person_path(@person, :the_format => :xml),
+      :class => :smalll,
+      :remote => true
+
+-# The publication_list_person_path() remote call (to people_controller#publication_list)
+-# will start the process of the publication list production in the supported
+-# formats (rtf, html, bibtex and xml).
+-#
+-# Please look at the people_controller#publication_list explanation for the
+-# intricacies of calls...

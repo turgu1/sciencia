@@ -1,0 +1,11 @@
+.legend_u
+  #{controller_name.titleize}
+  = render 'new_link'
+
+%table#dictionary.dtable{ 'data-source' => url_for(controller: controller_name, action: :index, format: :json) }
+  %thead
+    %tr
+      %th.hleft.fill Caption
+      %th.no-sort.buttons
+
+  %tbody

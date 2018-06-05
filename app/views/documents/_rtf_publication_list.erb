@@ -1,0 +1,31 @@
+<% # encoding: cp1252 %>
+{\rtf1\ansi\deff0{\fonttbl{\f0 Arial;}{\f1 Helvetica;}{\f2 Times New Roman;}}
+\margl475 \margr475 \margt475 \margb475
+<% if rtf_publication_list and some_document?(rtf_publication_list, selection_params) then -%>
+<% rtf_publication_list.each_with_index do |document_category, i| -%>
+<%= to_cp1252(document_category.rtf_header.gsub('XXXNAMEXXX',person.complete_name).gsub('XXXSECTXXX', (i > 0) ? '\sect ' : '')).html_safe -%>
+<% unless document_category.document_sub_categories.nil? then -%>
+<% document_category.document_sub_categories.each do |document_sub_category| -%>
+<% if some_document_in_sub_category?(document_sub_category, selection_params) -%>
+{\pard\sb180\keepn\fs22\f0\b <%= to_cp1252(document_sub_category.title).html_safe %>\par}
+<% unless document_sub_category.documents.nil? then -%>
+<% document_sub_category.documents.each_with_index do |document, index| -%>
+<% if document_selected?(document, selection_params) -%>
+{\pard\sb90\keep<%= document.events_for(person).blank? ? '' : '\keepn' %>\fs22\f0\tx480\li480\fi-480 <%= raw "[#{document_sub_category.abbrev}#{document_sub_category.documents.size - index}]\\tab " + to_cp1252(gen_report_data_for_document(document, document.document_type.report_field_list, :rtf)).html_safe %>\par}
+<% unless (events = document.events_for(person)).blank? -%>
+<% formatted_events(events, :rtf).each do |event| -%>
+{\pard\sb60\keep\fs22\f0\tx1000\li1000\fi-260 \bullet \tab <%= raw to_cp1252(event).html_safe %>\par}
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<%= to_cp1252(document_category.rtf_footer).html_safe %>
+<% end -%>
+<% else -%>
+{\pard\fs36\cf0\qc <%= t('application.msg.no_document') %> \par}
+<% end -%>
+}

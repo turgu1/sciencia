@@ -1,0 +1,45 @@
+= simple_form_for(@document, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, autofocus: true
+    = f.input :document_reference
+    = f.association :security_classification
+    = f.association :peer_review
+    = f.input :page_count
+    = f.input :pages_reference
+    = f.association :document_type
+    = f.input :address
+    = f.input :annote
+    = f.input :booktitle
+    = f.input :chapter
+    = f.input :edition
+    = f.association :editor
+    = f.input :howpublished
+    = f.association :institution
+    = f.input :key
+    = f.input :month
+    = f.input :note
+    = f.input :number
+    = f.association :org
+    = f.association :publisher
+    = f.association :school
+    = f.input :series
+    = f.input :volume
+    = f.input :year
+    = f.input :abstract
+    = f.input :contents
+    = f.input :copyright
+    = f.input :isbn
+    = f.input :issn
+    = f.input :keywords
+    = f.association :language
+    = f.input :location
+    = f.input :lccn
+    = f.input :url
+    = f.association :document_sub_category
+    = f.association :journal
+    = f.association :last_update_by
+
+  .form-actions
+    = f.button :submit

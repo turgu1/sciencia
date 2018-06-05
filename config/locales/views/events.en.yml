@@ -1,0 +1,6 @@
+en:
+  events:
+    new: New Event
+    index_legend: Listing Events
+    new_legend: New Event
+    edit_legend: Editing Event

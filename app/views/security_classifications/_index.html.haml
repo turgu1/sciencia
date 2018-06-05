@@ -1,0 +1,14 @@
+.legend
+  Security Classifications
+  = render 'new_link'
+
+%table.dtable{ data: { source: security_classifications_path(format: :json), sort_column: 3, sort_order: 'asc' } }
+  %thead
+    %tr
+      %th.hleft Caption
+      %th.hcenter Abbreviation
+      %th.hcenter Title Marker
+      %th.hcenter Order
+      %th.no-sort.buttons
+
+  %tbody

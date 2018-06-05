@@ -1,0 +1,15 @@
+.modal-header
+  %button.close{ :type => "button", 'data-dismiss' => "modal", 'aria-hidden' => true} &times;
+  %h4
+    #{title}
+.modal-body
+  - if fields.nil?
+    %span= 'No field defined'
+  - else
+    = show_entry show_modal do |e|
+      - fields.each do |f|
+        = e.field f
+
+.modal-footer
+  = link_to 'OK', local_assigns.has_key?(:return_to) ? return_to : '#', remote: true, 'data-dismiss' => "modal", :class => 'btn btn-primary'
+

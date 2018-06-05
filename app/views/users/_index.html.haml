@@ -1,0 +1,25 @@
+.legend Users
+
+%table.table-header-rotated.no-border
+  %thead
+    %tr
+      %th Username
+      %th.hcenter eMail
+      %th.hcenter Last Sign In
+      - User.all_roles_syms.each do |role|
+        %th.rotate-45
+          %div
+            %span= link_to role.to_s.capitalize, '#'
+      %th.no-wrap
+  %tbody
+    - @users.each do |user|
+      %tr
+        %th.row-header= user.username
+        %th.row-header.hcenter= user.email
+        %th.row-header.hcenter= user.last_sign_in_at.localtime
+        - User.all_roles.each do |role|
+          %td.hcenter= user.roles.index(role).nil? ? '' : 'X'
+        %td.no-wrap{ style: 'text-align: left;' }
+          = link_to('Psw', change_password_for_user_path(user), class: 'btn btn-xs btn-primary', remote: true, title: 'Change user password') if can? :manage, user
+          = edit_action user
+          = delete_action user, "[#{user.name}]"

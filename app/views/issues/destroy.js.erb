@@ -1,0 +1,5 @@
+oTable = $("#ISSUE_<%= @the_id.to_s %>").closest('table').dataTable();
+oTable.fnDeleteRow(oTable.fnGetPosition($("#ISSUE_<%= @the_id.to_s %>")[0]));
+oTable.fnDraw();
+replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
+

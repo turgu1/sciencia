@@ -1,0 +1,15 @@
+.legend
+  <i class="fa fa-sitemap"></i>&nbsp;&nbsp;Organisations
+  = render 'new_link'
+
+%table.dtable{ 'data-source' => organisations_path(format: :json) }
+  %thead
+    %tr
+      %th.hleft Name
+      %th.hcenter Abbreviation
+      %th.hcenter People count
+      %th.hcenter Other
+      %th.hcenter Order
+      %th.no-sort.buttons
+
+  %tbody

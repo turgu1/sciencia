@@ -1,0 +1,10 @@
+.legend_u
+  Comment for issue [#{@comment.issue.title}]
+  = render partial: 'edit_link', object: @comment
+
+= show_entry @comment do |e|
+  = e.field :comment
+  = e.field :user
+  = e.field :entry_time
+
+= remote_link_to 'Back', issue_path(@comment.issue)

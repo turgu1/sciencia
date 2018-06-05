@@ -1,0 +1,114 @@
+en:
+  attributes:
+    abbreviation: Abbreviation
+    abstract: Abstract
+    address: Address
+    annote: Annote
+    author: Author
+    authors: Authors
+    booktitle: Book Title
+    caption: Caption
+    chapter: Chapter
+    content_type: Content Type
+    contents: Contents
+    copyright: Copyright
+    date: Date
+    description: Description
+    document: Document
+    document_category: Category
+    document_sub_category: Sub Category
+    document_reference: Reference
+    document_type: Document Type
+    edition: Edition
+    editor: Editor
+    editor_caption: Editor
+    email: eMail
+    erased: Erased
+    event: Event
+    events: Events
+    field_list: Field List
+    filename: File Name
+    first_name: First Name
+    height: Height
+    hidden: Hidden
+    howpublished: How Published
+    institution: Institution
+    institution_caption: Institution
+    is_a_reference_prefix: Is a Ref Prefix
+    isbn: ISBN
+    issn: ISSN
+    journal: Journal
+    journal_caption: Journal
+    key: Key
+    keywords: Keywords
+    language: Language
+    language_caption: Language
+    last_name: Last Name
+    last_update_by: Last Update
+    lccn: :LCCN
+    location: Location
+    main_author: Main Author
+    month: Month
+    name: Name
+    no_peer_review_document_sub_category: No Peer Rev Sub Cat
+    no_peer_review_document_sub_category_html: "No&nbsp;Peer&nbsp;Rev Sub&nbsp;Cat"
+    note: Note
+    number: Number
+    ok: OK
+    order: Order
+    org: Section
+    org_caption: Section
+    organisation: Section
+    organisations: Sections
+    other: Other
+    others: Others
+    page_count: Page Count
+    pages_reference: Pages
+    peer_review: Peer Review
+    peer_review_required: Peer Review Required
+    peer_review_document_sub_category: Peer Rev Sub Cat
+    peer_review_document_sub_category_html: "Peer&nbsp;Rev Sub&nbsp;Cat"
+    people_count: People Count
+    person_name: Associated Person
+    phone: Phone
+    presenter: Presenter
+    publisher: Publisher
+    publisher_caption: Publisher
+    reference_prefix: Reference Prefix
+    report_field_list: Report Field List
+    rtf_footer: RTF Footer
+    rtf_header: RTF Header
+    school: School
+    school_caption: School
+    security_classification: Security Classification
+    series: Series
+    size: Size
+    sl: SL
+    synonyms: Synonyms
+    thumbnail: Thumbnail
+    title: Title
+    url: URL
+    user: User
+    username: Username
+    volume: Volume
+    width: Width
+    year: Year
+
+  msg:
+    no_field: "No field defined!"
+
+  add: Add
+  back: Back
+  edit: Edit
+  destroy: Remove
+  none: "NONE!!!"
+  ok: OK
+  replace: Replace
+  do_replace: Do Replace
+  show: Show
+  sure: Are you sure?
+
+  html_format: HTML Format
+  rtf_format: RTF Format
+  xml_format: XML Format
+  bibtex_format: BibTeX Format

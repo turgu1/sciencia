@@ -1,0 +1,28 @@
+.rer-report
+  - if publication_list and some_document?(publication_list, selection_params) then
+    - publication_list.each do |document_category|
+      - if some_document_in_category?(document_category, selection_params)
+        .category
+          = document_category.caption
+        - unless document_category.document_sub_categories.nil? then
+          - document_category.document_sub_categories.each do |document_sub_category|
+            - if some_document_in_sub_category?(document_sub_category, selection_params)
+              .sub-category= document_sub_category.title
+              %table.hang.no-strip.no-border
+                %tbody
+                  - unless document_sub_category.documents.nil? then
+                    - document_sub_category.documents.each_with_index do |document, index|
+                      - if document_selected?(document, selection_params)
+                        %tr
+                          %td.idx= "[#{document_sub_category.abbrev}#{document_sub_category.documents.size - index}]"
+                          %td
+                            - logger.info("Document Id: #{document.id.to_s}.")
+                            = gen_report_data_for_document(document, document.document_type.report_field_list).html_safe
+                            - unless (events = document.events_for(person)).blank?
+                              %ul
+                                - formatted_events(events, :html).each do |event|
+                                  %li= event.html_safe
+        %br/
+        %br/
+  - else
+    %p= t('application.msg.no_document')

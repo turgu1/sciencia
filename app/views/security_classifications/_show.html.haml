@@ -1,0 +1,11 @@
+.legend_u
+  #{@security_classification.caption}
+  = render partial: 'edit_link', object: @security_classification
+
+= show_entry @security_classification do |e|
+  = e.field :caption
+  = e.field :abbreviation
+  = e.field :title_marker
+  = e.field :order
+
+= remote_link_to 'Back', security_classifications_path

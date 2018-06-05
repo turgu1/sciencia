@@ -1,0 +1,31 @@
+.modal-header
+  %button.close{ :type => "button", 'data-dismiss' => "modal", 'aria-hidden' => true} &times;
+  %h3
+    %p Publication List Production Parameters
+    %p #{the_format} Format
+.modal-body
+  = simple_form_for(:modal_params, :url => target_url) do |f|
+    .well.well-small
+      = f.input :all_publications, :as => :boolean
+    .well.well-small
+      = f.input :from_selection, :as => :boolean
+      = f.input :selection, as: :hidden, input_html: { class: 'selection-list'}
+    .well.well-small
+      %h4 Start From:
+      = f.input :from_month,
+        :label => 'Month',
+        :collection => months_collection,
+        :input_html => { :class => 'small-field' },
+        :selected => 1,
+        :include_blank => false,
+        :label_method => :first,
+        :value_method => :last
+      = f.input :from_year,
+        :label => 'Year',
+        :collection => (Date.today.year-15)..(Date.today.year+15),
+        :input_html => { :class => 'small-field' },
+        :selected => Date.today.year,
+        :include_blank => false
+    .modal-footer
+      = link_to 'Cancel', '#',        'data-dismiss' => "modal", :class => 'smallbtn'
+      = f.button :submit, 'Generate', :class => 'smallbtn', onclick: '$("#modal-dialog").modal("hide");build_selection_list()'

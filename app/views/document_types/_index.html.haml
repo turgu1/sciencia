@@ -1,0 +1,15 @@
+.legend
+  Document Types
+  = render 'new_link'
+
+%table.dtable{ data: { source: document_types_path(format: :json), sort_column: 2, sort_order: 'asc' } }
+  %thead
+    %tr
+      %th.hleft Caption
+      %th.hcenter Abbrev.
+      %th.hcenter Order
+      %th.hcenter.no-sort Peer rev sub cat
+      %th.hcenter.no-sort No peer rev sub cat
+      %th.no-sort.buttons
+
+  %tbody

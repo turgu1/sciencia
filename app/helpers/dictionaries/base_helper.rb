@@ -1,0 +1,2 @@
+module Dictionaries::BaseHelper
+end

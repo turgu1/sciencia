@@ -1,0 +1,16 @@
+= simple_form_for(@document_type, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :caption,           :input_html => { :class => 'large-field' }, autofocus: true
+    = f.input :abbreviation,      :input_html => { :class => 'small-field' }
+    = f.input :order,             :input_html => { :class => 'small-field' }
+    = f.input :synonyms,          :input_html => { :class => 'large-field' }
+    = f.input :field_list,        :input_html => { :class => 'large-field' }
+    = f.input :report_field_list, :input_html => { :class => 'large-field' }
+    = f.input :hidden_author
+    = f.association :peer_review_document_sub_category, :label_method => :full_caption, :include_blank => false
+    = f.association :no_peer_review_document_sub_category, :label_method => :full_caption, :include_blank => false
+
+  .form-actions
+    = f.button :submit

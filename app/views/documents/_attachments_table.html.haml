@@ -1,0 +1,18 @@
+.col-md-8
+  .control_group.required
+    %label.string.required.control-label= 'Attachments'
+    .controls
+      %table#attachments-table.attachments-table.manual-zebra
+        %thead
+          %tr
+            %th
+              = 'File'
+            %th
+        %tbody#attachments-list
+          = attachments_table.fields_for :attachments, wrapper: false do |f|
+            %tr.fields
+              %td
+                = f.file_field :doc_file, class: 'max-width'
+              %td.vcenter
+                = f.link_to_remove('Remove').html_safe
+        %caption= attachments_table.link_to_add 'Add', :attachments, data: { target: '#attachments-table' }

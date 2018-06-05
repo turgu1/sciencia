@@ -1,0 +1,5 @@
+oTable = $('#people').dataTable();
+oTable.fnDeleteRow(oTable.fnGetPosition($("#PERSON_<%= @the_id.to_s %>")[0]));
+oTable.fnDraw();
+replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
+

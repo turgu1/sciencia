@@ -1,0 +1,15 @@
+.legend_u
+  .row
+    .col-md-8
+      #{@organisation.full_caption}
+      = render partial: 'edit_link', object: @organisation
+      = remote_link_to 'Show', organisation_path(@organisation, modal: true), class: 'btn btn-xs btn-info'
+      = remote_link_to 'Orgs', organisations_path, class: 'smalll'
+    .col-md-4
+      .legend
+        Personnel
+        = render partial: 'people/new_link'
+
+
+
+= render :partial => 'people/index'

@@ -1,0 +1,12 @@
+<% unless bibtex_publication_list.nil? then -%>
+<%- Document.init_bibtex_ident -%>
+<% bibtex_publication_list.select { |d| document_selected?(d, selection_params) }.each do |document| -%>
+@<%= document.bibtex_type %>{<%= document.bibtex_ident %>,
+<%= gen_report_data_for_document(document, document.document_type.report_field_list, :bibtex).html_safe %>
+}
+
+<% end -%>
+<% else -%>
+<%= t('application.msg.no_document') %>
+<% end -%>
+

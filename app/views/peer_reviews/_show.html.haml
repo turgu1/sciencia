@@ -1,0 +1,10 @@
+.legend_u
+  = render partial: 'edit_link', object: @peer_review
+  #{@peer_review.caption}
+
+= show_entry @peer_review do |e|
+  = e.field :caption
+  = e.field :abbreviation
+  = e.field :order
+
+= remote_link_to 'Back', peer_reviews_path

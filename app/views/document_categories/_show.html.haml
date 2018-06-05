@@ -1,0 +1,12 @@
+.legend_u
+  #{@document_category.caption}
+  = render partial: 'edit_link', object: @document_category
+
+= show_entry @document_category do |e|
+  = e.field :caption
+  = e.field :abbreviation
+  = e.field :order
+  = e.field :rtf_header
+  = e.field :rtf_footer
+
+= remote_link_to 'Back', document_categories_path

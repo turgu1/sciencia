@@ -1,0 +1,25 @@
+- some_error = !authors_table.object.errors.messages[:authors].blank?
+.form-group
+
+  %label.string.required.control-label.col-md-3{ class: "#{some_error ? 'text-error' : ''}"}= 'Authors'
+
+  .controls.col-md-9
+    = "<p class='text-error'>#{authors_table.object.errors.messages[:authors].join(%Q{<br/>})}</p>".html_safe unless authors_table.object.errors.messages[:authors].blank?
+    %table#authors-table.authors-table.manual-zebra.nested-container
+      %thead
+        %tr
+          %th
+            = "<i class='fa fa-magic'></i>&nbsp;&nbsp;Name".html_safe
+          %th.hcenter
+            = 'Main Author'
+          - if can? :manage_hidden, Author
+            %th.hcenter
+              = 'Order'
+            %th.hcenter
+              = 'Hidden'
+          %th
+      %tbody#authors-list
+        = authors_table.simple_fields_for :authors, wrapper: false do |author|
+          = render "author_fields", f: author
+
+      %caption= link_to_add_association('Add', authors_table, :authors, 'data-association-insertion-node': '#authors-list', 'data-association-insertion-method': 'append')

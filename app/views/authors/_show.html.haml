@@ -1,0 +1,12 @@
+.legend_u
+  #{@author.person}
+  = render partial: 'edit_link', object: @author
+
+= show_entry @author do |e|
+  = e.field :person
+  = e.field :document
+  = e.field :main_author
+  = e.field :hidden
+  = e.field :order
+
+= remote_link_to 'Back', authors_path

@@ -1,0 +1,6 @@
+.legend_u
+  = "#{@item.model_name.human}: #{@item.caption}"
+  = render partial: 'edit_link', object: @item
+  = remote_link_to 'Back', url_for(controller: controller_name, action: :index), class: 'smalll'
+
+= render :partial => 'documents/index', locals: { parent_klass: @item.class.name, parent_id: @item.id }

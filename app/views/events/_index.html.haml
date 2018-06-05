@@ -1,0 +1,15 @@
+.legend
+  Events
+  = render 'new_link'
+
+%table.dtable{ 'data-source' => events_path(format: :json) }
+  %thead
+    %tr
+      %th.hleft Description
+      %th.hcenter Month
+      %th.hcenter Year
+      %th.hcenter Author
+      %th.hcenter Document
+      %th.no-sort.buttons
+
+  %tbody

@@ -1,0 +1,11 @@
+replace_content(
+    '#modal-info',
+    "<%= j(render(
+            :partial => 'show_modal',
+            :object => @person,
+            :locals => {
+                :title => @person.complete_name,
+                :fields => [:first_name, :last_name, :email, :phone, :organisation]
+            })) %>");
+$('#modal-dialog').modal({ backdrop: false });
+

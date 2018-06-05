@@ -1,0 +1,5 @@
+<% if @msg -%>
+  $('<p id="document_title_msg" class="text-warning"><i><%= j(@msg) %></i></p>').insertAfter('#document_title');
+<% else %>
+  $('#document_title_msg').remove();
+<% end -%>

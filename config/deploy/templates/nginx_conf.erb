@@ -1,0 +1,11 @@
+upstream unicorn_<%= fetch(:nginx_config_name) %> {
+<% if fetch(:unicorn_use_tcp) -%>
+  <% roles(:app).each do |role| -%>
+    server <%= role.hostname %>:<%= fetch(:unicorn_tcp_listen_port)%> fail_timeout=<%= fetch(:nginx_fail_timeout) %>;
+  <% end -%>
+<% else -%>
+  server unix:/tmp/unicorn.<%= fetch(:nginx_config_name) %>.sock fail_timeout=<%= fetch(:nginx_fail_timeout) %>;
+<% end -%>
+}
+
+<%= template_to_s("_default_server_directive.erb").to_s %>

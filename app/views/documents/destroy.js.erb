@@ -1,0 +1,6 @@
+oTable = $('#documents').dataTable();
+oTable.fnDeleteRow(oTable.fnGetPosition($("#DOC_<%= @the_id.to_s %>")[0]));
+oTable.fnDraw();
+replace_content('#document-count', "<%= j(render(partial: 'documents/document_count')) %>");
+replace_content('#flash-pane', "<%= j(render(partial: 'layouts/flash')) %>");
+

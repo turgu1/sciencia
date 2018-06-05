@@ -1,0 +1,12 @@
+= simple_form_for(@author, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :person, autofocus: true
+    = f.association :document
+    = f.input :main_author
+    = f.input :hidden
+    = f.input :order
+
+  .form-actions
+    = f.button :submit

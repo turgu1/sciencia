@@ -1,0 +1,10 @@
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :username, input_html: { class: 'medium-field' }
+    = f.input :email, input_html: { class: 'large-field' }
+    = f.input :roles, collection: User.all_roles, as: :check_boxes
+
+  .form-actions
+    = f.button :submit

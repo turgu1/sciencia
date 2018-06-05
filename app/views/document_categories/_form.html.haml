@@ -1,0 +1,12 @@
+= simple_form_for(@document_category, remote: true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :caption,      :input_html => { :class => 'large-field' }, autofocus: true
+    = f.input :abbreviation, :input_html => { :class => 'small-field' }
+    = f.input :order,        :input_html => { :class => 'small-field' }
+    = f.input :rtf_header
+    = f.input :rtf_footer
+
+  .form-actions
+    = f.button :submit

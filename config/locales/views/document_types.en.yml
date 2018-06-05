@@ -1,0 +1,6 @@
+en:
+  document_types:
+    new: New Document type
+    index_legend: Listing Document Types
+    new_legend: New Document Type
+    edit_legend: Editing Document Type

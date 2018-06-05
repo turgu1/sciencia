@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: sciencia_development
+  pool: 5
+  username: sciencia_dev
+  password: snoopy1234
+  host: localhost
+  
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: sciencia_test
+  pool: 5
+  username: sciencia_dev
+  password: snoopy1234
+  host: localhost
