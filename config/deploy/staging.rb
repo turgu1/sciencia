@@ -7,9 +7,16 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-set :server,    "appdev"
-set :app_user,  "stageuser"
-set :superuser, "admdev"
+definitions = "#{fetch(:rails_root)}/../staging.rb"
+
+if File.exists?(definitions)
+  puts "==> Reading name values from #{definitions} ..."
+  load definitions
+else
+  set :server,    "appdev"
+  set :app_user,  "stageuser"
+  set :superuser, "admdev"
+end
 
 # ---- SSL config ----
 set :nginx_use_ssl, true

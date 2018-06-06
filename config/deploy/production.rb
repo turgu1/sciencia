@@ -9,9 +9,16 @@
 
 # Where the application will be installed:
 
-set :server,    "appserv"
-set :app_user,  "userapp"
-set :superuser, "admserv"
+definitions = "#{fetch(:rails_root)}/../production.rb"
+
+if File.exists?(definitions)
+  puts "==> Reading name values from #{definitions} ..."
+  load definitions
+else
+  set :server,    "appserv"
+  set :app_user,  "userapp"
+  set :superuser, "admserv"
+end
 
 # ---- SSL config ----
 set :nginx_use_ssl, true
