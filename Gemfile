@@ -47,7 +47,7 @@ group :development do
   gem 'capistrano-secrets-yml',     '~> 1.1.0', :require => false
   gem 'sshkit-sudo'
   gem 'capistrano-unicorn-nginx',   '~> 5.2.0', :require => false
-  gem 'capistrano-postgresql',      '~> 5.0.0', :require => false
+  gem 'capistrano-postgresql',      '~> 5.0.1', :require => false
 end
 
 group :development, :test do
