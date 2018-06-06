@@ -24,11 +24,12 @@ set :bundle_flags, '--deployment --quiet --local'
 
 # ----- postgresql -----
 
-set :pg_username,   "#{fetch(:application)}"
-set :pg_database,   "#{fetch(:application)}_production"
-set :pg_extensions, ["hstore"]
-set :pg_env,        "production"
-set :pg_host,       "localhost"
+set :pg_username,                 "#{fetch(:application)}"
+set :pg_database,                 "#{fetch(:application)}_production"
+set :pg_extensions,               ["hstore"]
+set :pg_env,                      "production"
+set :pg_host,                     "localhost"
+set :pg_generate_random_password, true
 
 # ----- nginx and unicorn -----
 

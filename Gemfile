@@ -47,9 +47,7 @@ group :development do
   gem 'capistrano-secrets-yml',     '~> 1.1.0', :require => false
   gem 'sshkit-sudo'
   gem 'capistrano-unicorn-nginx',   '~> 5.2.0', :require => false
-  gem 'capistrano-postgresql',      '~> 4.9.2', :require => false
-  #gem 'capistrano-unicorn-nginx', github: 'turgu1/capistrano-unicorn-nginx', branch: 'patch-certif-lookup', :require => false
-  #gem 'capistrano-postgresql',    github: 'turgu1/capistrano-postgresql',    branch: 'patch-create-user',   :require => false
+  gem 'capistrano-postgresql',      '~> 5.0.0', :require => false
 end
 
 group :development, :test do
