@@ -52,22 +52,22 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   # GET /documents/new.js
   def new
-    dt = DocumentType.where(:abbreviation => 'R').take
+    dt = DocumentType.where(abbreviation: 'R').take
 
     @document = Document.new({
-        :month       => Time.now.month,
-        :year        => Time.now.year,
-        :peer_review => PeerReview.find(2),
-        :publisher   => Dictionaries::Publisher.where(caption: 'DRDC-RDDC').take,
-        :document_sub_category => DocumentSubCategory.find(dt.peer_review_document_sub_category_id),
-        :document_type => dt
+        month:        Time.now.month,
+        year:         Time.now.year,
+        peer_review:  PeerReview.find(2),
+        publisher:    Dictionaries::Publisher.where(caption: 'DRDC-RDDC').take,
+        document_sub_category:  DocumentSubCategory.find(dt.peer_review_document_sub_category_id),
+        document_type:  dt
     })
 
     @document.authors.build({
-        :person_id   => current_user.person_id,
-        :main_author => true,
-        :hidden      => false,
-        :order       => 1
+        person_id:    current_user.person_id,
+        main_author:  true,
+        hidden:       false,
+        order:        1
     })
     authorize! :create, @document
 

@@ -12,11 +12,11 @@ describe PeerReviewsController do
     end
 
     it "routes to #show" do
-      get("/peer_reviews/1").should route_to("peer_reviews#show", :id => "1")
+      get("/peer_reviews/1").should route_to("peer_reviews#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/peer_reviews/1/edit").should route_to("peer_reviews#edit", :id => "1")
+      get("/peer_reviews/1/edit").should route_to("peer_reviews#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe PeerReviewsController do
     end
 
     it "routes to #update" do
-      put("/peer_reviews/1").should route_to("peer_reviews#update", :id => "1")
+      put("/peer_reviews/1").should route_to("peer_reviews#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/peer_reviews/1").should route_to("peer_reviews#destroy", :id => "1")
+      delete("/peer_reviews/1").should route_to("peer_reviews#destroy", id: "1")
     end
 
   end

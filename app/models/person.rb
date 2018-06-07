@@ -3,11 +3,11 @@ class Person < ApplicationRecord
   belongs_to :organisation, inverse_of: :people
   belongs_to :user
 
-  has_many :authors, inverse_of: :person, :dependent => :destroy
-  has_many :documents, :through => :authors
+  has_many :authors, inverse_of: :person, dependent: :destroy
+  has_many :documents, through: :authors
 
-  validates :first_name, :last_name, :presence => true
-  validates :organisation, :presence => true
+  validates :first_name, :last_name, presence: true
+  validates :organisation, presence: true
 
   counter_culture :organisation
 

@@ -1,12 +1,12 @@
 replace_content(
     '#modal-info',
     "<%= j(render(
-            :partial => 'show_modal',
-            :object => @document_type,
-            :locals => {
-                :title => @document_type.caption,
-                :return_to => document_types_path,
-                :fields => [:caption, :abbreviation, :order, :synonyms, :field_list,
+            partial: 'show_modal',
+            object: @document_type,
+            locals: {
+                title: @document_type.caption,
+                return_to: document_types_path,
+                fields: [:caption, :abbreviation, :order, :synonyms, :field_list,
                             :report_field_list, :hidden_author, :peer_review_document_sub_category,
                             :no_peer_review_document_sub_category]})) %>");
 

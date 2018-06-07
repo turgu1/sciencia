@@ -3,16 +3,16 @@ class Author < ApplicationRecord
   belongs_to :person, inverse_of: :authors
   belongs_to :document, inverse_of: :authors
 
-  has_many :events, :dependent => :destroy, inverse_of: :author
+  has_many :events, dependent:  :destroy, inverse_of: :author
 
-  validates_inclusion_of :main_author, :in => [true, false]
+  validates_inclusion_of :main_author, in: [true, false]
   validate :check_name
 
   counter_culture :person
 
   default_scope { includes(:person).order('"order" ASC') }
 
-  accepts_nested_attributes_for :person, :allow_destroy => false
+  accepts_nested_attributes_for :person, allow_destroy:  false
 
   before_save :adjust_person
 

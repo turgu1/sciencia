@@ -23,7 +23,7 @@ describe AttachmentsController do
   # This should return the minimal set of attributes required to create a valid
   # Attachment. As you add validations to Attachment, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "document" => "" } }
+  let(:valid_attributes) { { "document": "" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe AttachmentsController do
   describe "GET show" do
     it "assigns the requested attachment as @attachment" do
       attachment = Attachment.create! valid_attributes
-      get :show, {:id => attachment.to_param}, valid_session
+      get :show, {id: attachment.to_param}, valid_session
       assigns(:attachment).should eq(attachment)
     end
   end
@@ -56,7 +56,7 @@ describe AttachmentsController do
   describe "GET edit" do
     it "assigns the requested attachment as @attachment" do
       attachment = Attachment.create! valid_attributes
-      get :edit, {:id => attachment.to_param}, valid_session
+      get :edit, {id: attachment.to_param}, valid_session
       assigns(:attachment).should eq(attachment)
     end
   end
@@ -65,18 +65,18 @@ describe AttachmentsController do
     describe "with valid params" do
       it "creates a new Attachment" do
         expect {
-          post :create, {:attachment => valid_attributes}, valid_session
+          post :create, {attachment: valid_attributes}, valid_session
         }.to change(Attachment, :count).by(1)
       end
 
       it "assigns a newly created attachment as @attachment" do
-        post :create, {:attachment => valid_attributes}, valid_session
+        post :create, {attachment: valid_attributes}, valid_session
         assigns(:attachment).should be_a(Attachment)
         assigns(:attachment).should be_persisted
       end
 
       it "redirects to the created attachment" do
-        post :create, {:attachment => valid_attributes}, valid_session
+        post :create, {attachment: valid_attributes}, valid_session
         response.should redirect_to(Attachment.last)
       end
     end
@@ -85,14 +85,14 @@ describe AttachmentsController do
       it "assigns a newly created but unsaved attachment as @attachment" do
         # Trigger the behavior that occurs when invalid params are submitted
         Attachment.any_instance.stub(:save).and_return(false)
-        post :create, {:attachment => { "document" => "invalid value" }}, valid_session
+        post :create, {attachment: { "document": "invalid value" }}, valid_session
         assigns(:attachment).should be_a_new(Attachment)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Attachment.any_instance.stub(:save).and_return(false)
-        post :create, {:attachment => { "document" => "invalid value" }}, valid_session
+        post :create, {attachment: { "document": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe AttachmentsController do
         # specifies that the Attachment created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Attachment.any_instance.should_receive(:update).with({ "document" => "" })
-        put :update, {:id => attachment.to_param, :attachment => { "document" => "" }}, valid_session
+        Attachment.any_instance.should_receive(:update).with({ "document": "" })
+        put :update, {id: attachment.to_param, attachment: { "document": "" }}, valid_session
       end
 
       it "assigns the requested attachment as @attachment" do
         attachment = Attachment.create! valid_attributes
-        put :update, {:id => attachment.to_param, :attachment => valid_attributes}, valid_session
+        put :update, {id: attachment.to_param, attachment: valid_attributes}, valid_session
         assigns(:attachment).should eq(attachment)
       end
 
       it "redirects to the attachment" do
         attachment = Attachment.create! valid_attributes
-        put :update, {:id => attachment.to_param, :attachment => valid_attributes}, valid_session
+        put :update, {id: attachment.to_param, attachment: valid_attributes}, valid_session
         response.should redirect_to(attachment)
       end
     end
@@ -128,7 +128,7 @@ describe AttachmentsController do
         attachment = Attachment.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Attachment.any_instance.stub(:save).and_return(false)
-        put :update, {:id => attachment.to_param, :attachment => { "document" => "invalid value" }}, valid_session
+        put :update, {id: attachment.to_param, attachment: { "document": "invalid value" }}, valid_session
         assigns(:attachment).should eq(attachment)
       end
 
@@ -136,7 +136,7 @@ describe AttachmentsController do
         attachment = Attachment.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Attachment.any_instance.stub(:save).and_return(false)
-        put :update, {:id => attachment.to_param, :attachment => { "document" => "invalid value" }}, valid_session
+        put :update, {id: attachment.to_param, attachment: { "document": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe AttachmentsController do
     it "destroys the requested attachment" do
       attachment = Attachment.create! valid_attributes
       expect {
-        delete :destroy, {:id => attachment.to_param}, valid_session
+        delete :destroy, {id: attachment.to_param}, valid_session
       }.to change(Attachment, :count).by(-1)
     end
 
     it "redirects to the attachments list" do
       attachment = Attachment.create! valid_attributes
-      delete :destroy, {:id => attachment.to_param}, valid_session
+      delete :destroy, {id: attachment.to_param}, valid_session
       response.should redirect_to(attachments_url)
     end
   end

@@ -9,13 +9,13 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
-  %body{ :class => "#{controller_name} #{action_name}" }
+  %body{ class: "#{controller_name} #{action_name}" }
     #modal-dialog.modal.fade.no-print{ tabindex: -1, role: :dialog }
       .modal-dialog
         #modal-info.modal-content
 
     = render 'layouts/navbar'
-    #main{ :role => "main" }
+    #main{ role: "main" }
     .container-fluid
       .row
         -#.col-md-2

@@ -15,7 +15,7 @@ if File.exists?(definitions)
 else
   set :server,    "appdev"
   set :app_user,  "stageuser"
-  set :superuser, "admdev"
+  set :superuser, "userdev"
 end
 
 # ---- SSL config ----

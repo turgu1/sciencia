@@ -23,7 +23,7 @@ describe Dictionaries::SchoolsController do
   # This should return the minimal set of attributes required to create a valid
   # Dictionaries::School. As you add validations to Dictionaries::School, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe Dictionaries::SchoolsController do
   describe "GET show" do
     it "assigns the requested dictionaries_school as @dictionaries_school" do
       school = Dictionaries::School.create! valid_attributes
-      get :show, {:id => school.to_param}, valid_session
+      get :show, {id: school.to_param}, valid_session
       assigns(:dictionaries_school).should eq(school)
     end
   end
@@ -56,7 +56,7 @@ describe Dictionaries::SchoolsController do
   describe "GET edit" do
     it "assigns the requested dictionaries_school as @dictionaries_school" do
       school = Dictionaries::School.create! valid_attributes
-      get :edit, {:id => school.to_param}, valid_session
+      get :edit, {id: school.to_param}, valid_session
       assigns(:dictionaries_school).should eq(school)
     end
   end
@@ -65,18 +65,18 @@ describe Dictionaries::SchoolsController do
     describe "with valid params" do
       it "creates a new Dictionaries::School" do
         expect {
-          post :create, {:dictionaries_school => valid_attributes}, valid_session
+          post :create, {dictionaries_school: valid_attributes}, valid_session
         }.to change(Dictionaries::School, :count).by(1)
       end
 
       it "assigns a newly created dictionaries_school as @dictionaries_school" do
-        post :create, {:dictionaries_school => valid_attributes}, valid_session
+        post :create, {dictionaries_school: valid_attributes}, valid_session
         assigns(:dictionaries_school).should be_a(Dictionaries::School)
         assigns(:dictionaries_school).should be_persisted
       end
 
       it "redirects to the created dictionaries_school" do
-        post :create, {:dictionaries_school => valid_attributes}, valid_session
+        post :create, {dictionaries_school: valid_attributes}, valid_session
         response.should redirect_to(Dictionaries::School.last)
       end
     end
@@ -85,14 +85,14 @@ describe Dictionaries::SchoolsController do
       it "assigns a newly created but unsaved dictionaries_school as @dictionaries_school" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::School.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_school => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_school: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_school).should be_a_new(Dictionaries::School)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::School.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_school => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_school: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe Dictionaries::SchoolsController do
         # specifies that the Dictionaries::School created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Dictionaries::School.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => school.to_param, :dictionaries_school => { "caption" => "MyString" }}, valid_session
+        Dictionaries::School.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: school.to_param, dictionaries_school: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested dictionaries_school as @dictionaries_school" do
         school = Dictionaries::School.create! valid_attributes
-        put :update, {:id => school.to_param, :dictionaries_school => valid_attributes}, valid_session
+        put :update, {id: school.to_param, dictionaries_school: valid_attributes}, valid_session
         assigns(:dictionaries_school).should eq(school)
       end
 
       it "redirects to the dictionaries_school" do
         school = Dictionaries::School.create! valid_attributes
-        put :update, {:id => school.to_param, :dictionaries_school => valid_attributes}, valid_session
+        put :update, {id: school.to_param, dictionaries_school: valid_attributes}, valid_session
         response.should redirect_to(school)
       end
     end
@@ -128,7 +128,7 @@ describe Dictionaries::SchoolsController do
         school = Dictionaries::School.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::School.any_instance.stub(:save).and_return(false)
-        put :update, {:id => school.to_param, :dictionaries_school => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: school.to_param, dictionaries_school: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_school).should eq(school)
       end
 
@@ -136,7 +136,7 @@ describe Dictionaries::SchoolsController do
         school = Dictionaries::School.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::School.any_instance.stub(:save).and_return(false)
-        put :update, {:id => school.to_param, :dictionaries_school => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: school.to_param, dictionaries_school: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe Dictionaries::SchoolsController do
     it "destroys the requested dictionaries_school" do
       school = Dictionaries::School.create! valid_attributes
       expect {
-        delete :destroy, {:id => school.to_param}, valid_session
+        delete :destroy, {id: school.to_param}, valid_session
       }.to change(Dictionaries::School, :count).by(-1)
     end
 
     it "redirects to the dictionaries_schools list" do
       school = Dictionaries::School.create! valid_attributes
-      delete :destroy, {:id => school.to_param}, valid_session
+      delete :destroy, {id: school.to_param}, valid_session
       response.should redirect_to(dictionaries_schools_url)
     end
   end

@@ -23,7 +23,7 @@ describe OrganisationsController do
   # This should return the minimal set of attributes required to create a valid
   # Organisation. As you add validations to Organisation, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { { "name": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe OrganisationsController do
   describe "GET show" do
     it "assigns the requested organisation as @organisation" do
       organisation = Organisation.create! valid_attributes
-      get :show, {:id => organisation.to_param}, valid_session
+      get :show, {id: organisation.to_param}, valid_session
       assigns(:organisation).should eq(organisation)
     end
   end
@@ -56,7 +56,7 @@ describe OrganisationsController do
   describe "GET edit" do
     it "assigns the requested organisation as @organisation" do
       organisation = Organisation.create! valid_attributes
-      get :edit, {:id => organisation.to_param}, valid_session
+      get :edit, {id: organisation.to_param}, valid_session
       assigns(:organisation).should eq(organisation)
     end
   end
@@ -65,18 +65,18 @@ describe OrganisationsController do
     describe "with valid params" do
       it "creates a new Organisation" do
         expect {
-          post :create, {:organisation => valid_attributes}, valid_session
+          post :create, {organisation: valid_attributes}, valid_session
         }.to change(Organisation, :count).by(1)
       end
 
       it "assigns a newly created organisation as @organisation" do
-        post :create, {:organisation => valid_attributes}, valid_session
+        post :create, {organisation: valid_attributes}, valid_session
         assigns(:organisation).should be_a(Organisation)
         assigns(:organisation).should be_persisted
       end
 
       it "redirects to the created organisation" do
-        post :create, {:organisation => valid_attributes}, valid_session
+        post :create, {organisation: valid_attributes}, valid_session
         response.should redirect_to(Organisation.last)
       end
     end
@@ -85,14 +85,14 @@ describe OrganisationsController do
       it "assigns a newly created but unsaved organisation as @organisation" do
         # Trigger the behavior that occurs when invalid params are submitted
         Organisation.any_instance.stub(:save).and_return(false)
-        post :create, {:organisation => { "name" => "invalid value" }}, valid_session
+        post :create, {organisation: { "name": "invalid value" }}, valid_session
         assigns(:organisation).should be_a_new(Organisation)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Organisation.any_instance.stub(:save).and_return(false)
-        post :create, {:organisation => { "name" => "invalid value" }}, valid_session
+        post :create, {organisation: { "name": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe OrganisationsController do
         # specifies that the Organisation created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Organisation.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => organisation.to_param, :organisation => { "name" => "MyString" }}, valid_session
+        Organisation.any_instance.should_receive(:update).with({ "name": "MyString" })
+        put :update, {id: organisation.to_param, organisation: { "name": "MyString" }}, valid_session
       end
 
       it "assigns the requested organisation as @organisation" do
         organisation = Organisation.create! valid_attributes
-        put :update, {:id => organisation.to_param, :organisation => valid_attributes}, valid_session
+        put :update, {id: organisation.to_param, organisation: valid_attributes}, valid_session
         assigns(:organisation).should eq(organisation)
       end
 
       it "redirects to the organisation" do
         organisation = Organisation.create! valid_attributes
-        put :update, {:id => organisation.to_param, :organisation => valid_attributes}, valid_session
+        put :update, {id: organisation.to_param, organisation: valid_attributes}, valid_session
         response.should redirect_to(organisation)
       end
     end
@@ -128,7 +128,7 @@ describe OrganisationsController do
         organisation = Organisation.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Organisation.any_instance.stub(:save).and_return(false)
-        put :update, {:id => organisation.to_param, :organisation => { "name" => "invalid value" }}, valid_session
+        put :update, {id: organisation.to_param, organisation: { "name": "invalid value" }}, valid_session
         assigns(:organisation).should eq(organisation)
       end
 
@@ -136,7 +136,7 @@ describe OrganisationsController do
         organisation = Organisation.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Organisation.any_instance.stub(:save).and_return(false)
-        put :update, {:id => organisation.to_param, :organisation => { "name" => "invalid value" }}, valid_session
+        put :update, {id: organisation.to_param, organisation: { "name": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe OrganisationsController do
     it "destroys the requested organisation" do
       organisation = Organisation.create! valid_attributes
       expect {
-        delete :destroy, {:id => organisation.to_param}, valid_session
+        delete :destroy, {id: organisation.to_param}, valid_session
       }.to change(Organisation, :count).by(-1)
     end
 
     it "redirects to the organisations list" do
       organisation = Organisation.create! valid_attributes
-      delete :destroy, {:id => organisation.to_param}, valid_session
+      delete :destroy, {id: organisation.to_param}, valid_session
       response.should redirect_to(organisations_url)
     end
   end

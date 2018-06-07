@@ -12,11 +12,11 @@ describe SecurityClassificationsController do
     end
 
     it "routes to #show" do
-      get("/security_classifications/1").should route_to("security_classifications#show", :id => "1")
+      get("/security_classifications/1").should route_to("security_classifications#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/security_classifications/1/edit").should route_to("security_classifications#edit", :id => "1")
+      get("/security_classifications/1/edit").should route_to("security_classifications#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe SecurityClassificationsController do
     end
 
     it "routes to #update" do
-      put("/security_classifications/1").should route_to("security_classifications#update", :id => "1")
+      put("/security_classifications/1").should route_to("security_classifications#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/security_classifications/1").should route_to("security_classifications#destroy", :id => "1")
+      delete("/security_classifications/1").should route_to("security_classifications#destroy", id: "1")
     end
 
   end

@@ -23,7 +23,7 @@ describe IssuesController do
   # This should return the minimal set of attributes required to create a valid
   # Issue. As you add validations to Issue, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "title" => "MyString" } }
+  let(:valid_attributes) { { "title": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe IssuesController do
   describe "GET show" do
     it "assigns the requested issue as @issue" do
       issue = Issue.create! valid_attributes
-      get :show, {:id => issue.to_param}, valid_session
+      get :show, {id: issue.to_param}, valid_session
       assigns(:issue).should eq(issue)
     end
   end
@@ -56,7 +56,7 @@ describe IssuesController do
   describe "GET edit" do
     it "assigns the requested issue as @issue" do
       issue = Issue.create! valid_attributes
-      get :edit, {:id => issue.to_param}, valid_session
+      get :edit, {id: issue.to_param}, valid_session
       assigns(:issue).should eq(issue)
     end
   end
@@ -65,18 +65,18 @@ describe IssuesController do
     describe "with valid params" do
       it "creates a new Issue" do
         expect {
-          post :create, {:issue => valid_attributes}, valid_session
+          post :create, {issue: valid_attributes}, valid_session
         }.to change(Issue, :count).by(1)
       end
 
       it "assigns a newly created issue as @issue" do
-        post :create, {:issue => valid_attributes}, valid_session
+        post :create, {issue: valid_attributes}, valid_session
         assigns(:issue).should be_a(Issue)
         assigns(:issue).should be_persisted
       end
 
       it "redirects to the created issue" do
-        post :create, {:issue => valid_attributes}, valid_session
+        post :create, {issue: valid_attributes}, valid_session
         response.should redirect_to(Issue.last)
       end
     end
@@ -85,14 +85,14 @@ describe IssuesController do
       it "assigns a newly created but unsaved issue as @issue" do
         # Trigger the behavior that occurs when invalid params are submitted
         Issue.any_instance.stub(:save).and_return(false)
-        post :create, {:issue => { "title" => "invalid value" }}, valid_session
+        post :create, {issue: { "title": "invalid value" }}, valid_session
         assigns(:issue).should be_a_new(Issue)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Issue.any_instance.stub(:save).and_return(false)
-        post :create, {:issue => { "title" => "invalid value" }}, valid_session
+        post :create, {issue: { "title": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe IssuesController do
         # specifies that the Issue created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Issue.any_instance.should_receive(:update).with({ "title" => "MyString" })
-        put :update, {:id => issue.to_param, :issue => { "title" => "MyString" }}, valid_session
+        Issue.any_instance.should_receive(:update).with({ "title": "MyString" })
+        put :update, {id: issue.to_param, issue: { "title": "MyString" }}, valid_session
       end
 
       it "assigns the requested issue as @issue" do
         issue = Issue.create! valid_attributes
-        put :update, {:id => issue.to_param, :issue => valid_attributes}, valid_session
+        put :update, {id: issue.to_param, issue: valid_attributes}, valid_session
         assigns(:issue).should eq(issue)
       end
 
       it "redirects to the issue" do
         issue = Issue.create! valid_attributes
-        put :update, {:id => issue.to_param, :issue => valid_attributes}, valid_session
+        put :update, {id: issue.to_param, issue: valid_attributes}, valid_session
         response.should redirect_to(issue)
       end
     end
@@ -128,7 +128,7 @@ describe IssuesController do
         issue = Issue.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Issue.any_instance.stub(:save).and_return(false)
-        put :update, {:id => issue.to_param, :issue => { "title" => "invalid value" }}, valid_session
+        put :update, {id: issue.to_param, issue: { "title": "invalid value" }}, valid_session
         assigns(:issue).should eq(issue)
       end
 
@@ -136,7 +136,7 @@ describe IssuesController do
         issue = Issue.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Issue.any_instance.stub(:save).and_return(false)
-        put :update, {:id => issue.to_param, :issue => { "title" => "invalid value" }}, valid_session
+        put :update, {id: issue.to_param, issue: { "title": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe IssuesController do
     it "destroys the requested issue" do
       issue = Issue.create! valid_attributes
       expect {
-        delete :destroy, {:id => issue.to_param}, valid_session
+        delete :destroy, {id: issue.to_param}, valid_session
       }.to change(Issue, :count).by(-1)
     end
 
     it "redirects to the issues list" do
       issue = Issue.create! valid_attributes
-      delete :destroy, {:id => issue.to_param}, valid_session
+      delete :destroy, {id: issue.to_param}, valid_session
       response.should redirect_to(issues_url)
     end
   end

@@ -1,10 +1,10 @@
 replace_content(
         '#modal-info',
         "<%= j(render(
-                :partial => 'show_modal',
-                :object => @document,
-                :locals => {
-                    :title => @document.title,
-                    :fields => [ :document_type ] +
+                partial: 'show_modal',
+                object: @document,
+                locals: {
+                    title: @document.title,
+                    fields: [ :document_type ] +
                                @document.document_type.try(:fields_sym_list)})) %>");
 $('#modal-dialog').modal({ backdrop: false });

@@ -61,7 +61,7 @@ module ApplicationHelper
   end
 
   def show_entry(obj, &block)
-    context = Bldr.new(:target => obj)
+    context = Bldr.new(target:  obj)
     ("<dl class='dl-horizontal'>" + capture(context, &block) + "</dl>").html_safe
   end
 

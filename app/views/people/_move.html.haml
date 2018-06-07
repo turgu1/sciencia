@@ -15,6 +15,6 @@
             format: :json                                                    |
           )}                                                                 |
   .form-actions
-    = f.button :submit, "Do Move", :confirm => "Moving #{@person.complete_name_with_org} to selected organisation. Are-you sure?"
+    = f.button :submit, "Do Move", confirm: "Moving #{@person.complete_name_with_org} to selected organisation. Are-you sure?"
 
 = remote_link_to 'Back', organisation_path(@person.organisation)

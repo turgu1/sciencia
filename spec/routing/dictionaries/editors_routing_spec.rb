@@ -12,11 +12,11 @@ describe Dictionaries::EditorsController do
     end
 
     it "routes to #show" do
-      get("/dictionaries/editors/1").should route_to("dictionaries/editors#show", :id => "1")
+      get("/dictionaries/editors/1").should route_to("dictionaries/editors#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/dictionaries/editors/1/edit").should route_to("dictionaries/editors#edit", :id => "1")
+      get("/dictionaries/editors/1/edit").should route_to("dictionaries/editors#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe Dictionaries::EditorsController do
     end
 
     it "routes to #update" do
-      put("/dictionaries/editors/1").should route_to("dictionaries/editors#update", :id => "1")
+      put("/dictionaries/editors/1").should route_to("dictionaries/editors#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/dictionaries/editors/1").should route_to("dictionaries/editors#destroy", :id => "1")
+      delete("/dictionaries/editors/1").should route_to("dictionaries/editors#destroy", id: "1")
     end
 
   end

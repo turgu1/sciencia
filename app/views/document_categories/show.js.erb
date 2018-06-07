@@ -1,13 +1,13 @@
 replace_content(
     '#modal-info',
     "<%= j(render(
-            :partial => 'show_modal',
-            :object => @document_category,
-            :locals => {
-                :title => @document_category.caption,
-                :return_to => document_categories_path,
-                :fields => [:caption, :abbreviation, :order,
-                            :rtf_header, :rtf_footer]})) %>");
+            partial: 'show_modal',
+            object: @document_category,
+            locals: {
+                title: @document_category.caption,
+                return_to: document_categories_path,
+                fields: [:caption, :abbreviation, :order,
+                         :rtf_header, :rtf_footer]})) %>");
 
 $('#modal-dialog').modal({ backdrop: false });
 

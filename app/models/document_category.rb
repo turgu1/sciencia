@@ -8,7 +8,7 @@ class DocumentCategory < ApplicationRecord
 
   scope :like, -> (pattern = '') { where('caption ilike :pat', pat: "%#{pattern}%") }
   scope :docs_for_list, -> (person) {
-    includes(:document_sub_categories => { :documents => [{:authors => :person }, {:events => {:author => :person}}]}).
+    includes(document_sub_categories: { documents: [{authors: :person }, {events: {author: :person}}]}).
     order('document_categories.order ASC, document_sub_categories.order ASC, documents.year DESC, documents.month DESC, events.description ASC, events.year DESC, events.month DESC').
     where("documents.id in (:docs)", docs: person.documents.collect(&:id)).
     references(:documents) }

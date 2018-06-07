@@ -1,11 +1,11 @@
 replace_content(
     '#modal-info',
     "<%= j(render(
-            :partial => 'show_modal',
-            :object => @comment,
-            :locals => {
-                :title => "Comment for issue [#{@comment.issue.title}].",
-                :fields => [:comment, :user, :entry_time]
+            partial: 'show_modal',
+            object: @comment,
+            locals: {
+                title: "Comment for issue [#{@comment.issue.title}].",
+                fields: [:comment, :user, :entry_time]
             })) %>");
 $('#modal-dialog').modal({ backdrop: false });
 

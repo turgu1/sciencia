@@ -13,12 +13,12 @@ class Documents2Datatable < BaseDatatable
     def data
       items.map do |item|
         {
-          '0' => item.document_type.try(:abbreviation) || 'NONE!!!',
-          '1' => item.document_sub_category.try(:abbreviation) || 'NONE!!!',
-          '2' => item.document_reference.html_safe,
-          '3' => item.title,
-          '4' => author_list(item, :html2),
-          '5' => item.date,
+          '0': item.document_type.try(:abbreviation) || 'NONE!!!',
+          '1': item.document_sub_category.try(:abbreviation) || 'NONE!!!',
+          '2': item.document_reference.html_safe,
+          '3': item.title,
+          '4': author_list(item, :html2),
+          '5': item.date,
         }
       end
     end

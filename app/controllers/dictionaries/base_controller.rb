@@ -35,7 +35,7 @@ class Dictionaries::BaseController < ApplicationController
       @items = @model.like(params[:q])
       respond_to do |format|
         format.json   {
-          @data = { :captions => @items.map { |p| p.caption } }
+          @data = { captions: @items.map { |p| p.caption } }
           render json: @data
         }
       end

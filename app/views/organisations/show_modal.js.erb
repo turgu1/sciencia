@@ -1,10 +1,10 @@
 replace_content(
     '#modal-info',
     "<%= j(render(
-            :partial => 'show_modal',
-            :object => @organisation,
-            :locals => {
-                :title => @organisation.full_caption,
-                :fields => [:name, :abbreviation, :order, :people_count, :other]
+            partial: 'show_modal',
+            object: @organisation,
+            locals: {
+                title: @organisation.full_caption,
+                fields: [:name, :abbreviation, :order, :people_count, :other]
             })) %>");
 $('#modal-dialog').modal({ backdrop: false });

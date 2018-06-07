@@ -12,11 +12,11 @@ describe Dictionaries::OrgsController do
     end
 
     it "routes to #show" do
-      get("/dictionaries/orgs/1").should route_to("dictionaries/orgs#show", :id => "1")
+      get("/dictionaries/orgs/1").should route_to("dictionaries/orgs#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/dictionaries/orgs/1/edit").should route_to("dictionaries/orgs#edit", :id => "1")
+      get("/dictionaries/orgs/1/edit").should route_to("dictionaries/orgs#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe Dictionaries::OrgsController do
     end
 
     it "routes to #update" do
-      put("/dictionaries/orgs/1").should route_to("dictionaries/orgs#update", :id => "1")
+      put("/dictionaries/orgs/1").should route_to("dictionaries/orgs#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/dictionaries/orgs/1").should route_to("dictionaries/orgs#destroy", :id => "1")
+      delete("/dictionaries/orgs/1").should route_to("dictionaries/orgs#destroy", id: "1")
     end
 
   end

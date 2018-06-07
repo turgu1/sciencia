@@ -23,7 +23,7 @@ describe SecurityClassificationsController do
   # This should return the minimal set of attributes required to create a valid
   # SecurityClassification. As you add validations to SecurityClassification, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe SecurityClassificationsController do
   describe "GET show" do
     it "assigns the requested security_classification as @security_classification" do
       security_classification = SecurityClassification.create! valid_attributes
-      get :show, {:id => security_classification.to_param}, valid_session
+      get :show, {id: security_classification.to_param}, valid_session
       assigns(:security_classification).should eq(security_classification)
     end
   end
@@ -56,7 +56,7 @@ describe SecurityClassificationsController do
   describe "GET edit" do
     it "assigns the requested security_classification as @security_classification" do
       security_classification = SecurityClassification.create! valid_attributes
-      get :edit, {:id => security_classification.to_param}, valid_session
+      get :edit, {id: security_classification.to_param}, valid_session
       assigns(:security_classification).should eq(security_classification)
     end
   end
@@ -65,18 +65,18 @@ describe SecurityClassificationsController do
     describe "with valid params" do
       it "creates a new SecurityClassification" do
         expect {
-          post :create, {:security_classification => valid_attributes}, valid_session
+          post :create, {security_classification: valid_attributes}, valid_session
         }.to change(SecurityClassification, :count).by(1)
       end
 
       it "assigns a newly created security_classification as @security_classification" do
-        post :create, {:security_classification => valid_attributes}, valid_session
+        post :create, {security_classification: valid_attributes}, valid_session
         assigns(:security_classification).should be_a(SecurityClassification)
         assigns(:security_classification).should be_persisted
       end
 
       it "redirects to the created security_classification" do
-        post :create, {:security_classification => valid_attributes}, valid_session
+        post :create, {security_classification: valid_attributes}, valid_session
         response.should redirect_to(SecurityClassification.last)
       end
     end
@@ -85,14 +85,14 @@ describe SecurityClassificationsController do
       it "assigns a newly created but unsaved security_classification as @security_classification" do
         # Trigger the behavior that occurs when invalid params are submitted
         SecurityClassification.any_instance.stub(:save).and_return(false)
-        post :create, {:security_classification => { "caption" => "invalid value" }}, valid_session
+        post :create, {security_classification: { "caption": "invalid value" }}, valid_session
         assigns(:security_classification).should be_a_new(SecurityClassification)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         SecurityClassification.any_instance.stub(:save).and_return(false)
-        post :create, {:security_classification => { "caption" => "invalid value" }}, valid_session
+        post :create, {security_classification: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe SecurityClassificationsController do
         # specifies that the SecurityClassification created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        SecurityClassification.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => security_classification.to_param, :security_classification => { "caption" => "MyString" }}, valid_session
+        SecurityClassification.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: security_classification.to_param, security_classification: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested security_classification as @security_classification" do
         security_classification = SecurityClassification.create! valid_attributes
-        put :update, {:id => security_classification.to_param, :security_classification => valid_attributes}, valid_session
+        put :update, {id: security_classification.to_param, security_classification: valid_attributes}, valid_session
         assigns(:security_classification).should eq(security_classification)
       end
 
       it "redirects to the security_classification" do
         security_classification = SecurityClassification.create! valid_attributes
-        put :update, {:id => security_classification.to_param, :security_classification => valid_attributes}, valid_session
+        put :update, {id: security_classification.to_param, security_classification: valid_attributes}, valid_session
         response.should redirect_to(security_classification)
       end
     end
@@ -128,7 +128,7 @@ describe SecurityClassificationsController do
         security_classification = SecurityClassification.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         SecurityClassification.any_instance.stub(:save).and_return(false)
-        put :update, {:id => security_classification.to_param, :security_classification => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: security_classification.to_param, security_classification: { "caption": "invalid value" }}, valid_session
         assigns(:security_classification).should eq(security_classification)
       end
 
@@ -136,7 +136,7 @@ describe SecurityClassificationsController do
         security_classification = SecurityClassification.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         SecurityClassification.any_instance.stub(:save).and_return(false)
-        put :update, {:id => security_classification.to_param, :security_classification => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: security_classification.to_param, security_classification: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe SecurityClassificationsController do
     it "destroys the requested security_classification" do
       security_classification = SecurityClassification.create! valid_attributes
       expect {
-        delete :destroy, {:id => security_classification.to_param}, valid_session
+        delete :destroy, {id: security_classification.to_param}, valid_session
       }.to change(SecurityClassification, :count).by(-1)
     end
 
     it "redirects to the security_classifications list" do
       security_classification = SecurityClassification.create! valid_attributes
-      delete :destroy, {:id => security_classification.to_param}, valid_session
+      delete :destroy, {id: security_classification.to_param}, valid_session
       response.should redirect_to(security_classifications_url)
     end
   end

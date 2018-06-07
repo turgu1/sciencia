@@ -199,7 +199,7 @@ module DocumentsHelper
       ),
 
       FieldsDefs.a_ff(
-          :month, 'Month*', "select_month(document.month, {}, {:name => 'document[month]'})",
+          :month, 'Month*', "select_month(document.month, {}, {name:  'document[month]'})",
           lambda { |document, output_type|
             case output_type
               when :bibtex
@@ -219,9 +219,9 @@ module DocumentsHelper
             end
             }),
       FieldsDefs.a_ff(
-          :year,  'Year*', "select_year(document.year, { :start_year => 1970, :end_year => (Time.now.year + 2) }, { :name => 'document[year]' })", "document.year.to_s"),
+          :year,  'Year*', "select_year(document.year, { start_year: 1970, end_year: (Time.now.year + 2) }, { name: 'document[year]' })", "document.year.to_s"),
       FieldsDefs.a_ff(
-          :authors, 'Authors*', "render :partial => 'authors_block', :object => document", 'author_list(document, output_type)'),
+          :authors, 'Authors*', "render partial:  'authors_block', object:  document", 'author_list(document, output_type)'),
       FieldsDefs.a_ff(
           :title, 'Title*', FieldsDefs.a_tf(:title),
           # Traitement spécial du titre lorsque celui-ci se termine avec un niveau

@@ -13,15 +13,15 @@ class DocumentsDatatable < BaseDatatable
     def data
       items.map do |item|
         {
-          'DT_RowId' => "DOC_#{item.id}",
-          '0' => check_box_tag('select-check-box'),
-          '1' => item.document_type.try(:abbreviation) || 'NONE!!!',
-          '2' => item.document_sub_category.try(:abbreviation) || 'NONE!!!',
-          '3' => item.document_reference.html_safe,
-          '4' => item.title,
-          '5' => author_list(item, :html),
-          '6' => item.date,
-          '7' => all_actions(item, item.title, {}, {parent_klass: @parent.class.name, parent_id: @parent.id})
+          'DT_RowId': "DOC_#{item.id}",
+          '0': check_box_tag('select-check-box'),
+          '1': item.document_type.try(:abbreviation) || 'NONE!!!',
+          '2': item.document_sub_category.try(:abbreviation) || 'NONE!!!',
+          '3': item.document_reference.html_safe,
+          '4': item.title,
+          '5': author_list(item, :html),
+          '6': item.date,
+          '7': all_actions(item, item.title, {}, {parent_klass: @parent.class.name, parent_id: @parent.id})
         }
       end
     end

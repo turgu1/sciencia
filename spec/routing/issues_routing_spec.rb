@@ -12,11 +12,11 @@ describe IssuesController do
     end
 
     it "routes to #show" do
-      get("/issues/1").should route_to("issues#show", :id => "1")
+      get("/issues/1").should route_to("issues#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/issues/1/edit").should route_to("issues#edit", :id => "1")
+      get("/issues/1/edit").should route_to("issues#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe IssuesController do
     end
 
     it "routes to #update" do
-      put("/issues/1").should route_to("issues#update", :id => "1")
+      put("/issues/1").should route_to("issues#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/issues/1").should route_to("issues#destroy", :id => "1")
+      delete("/issues/1").should route_to("issues#destroy", id: "1")
     end
 
   end

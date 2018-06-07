@@ -60,27 +60,27 @@ class Document < ApplicationRecord
   # are absent as they are treated separately
 
   BIBTEX_TYPE_TRANSLATION = {
-      "TM" => 'techreport',
-      "TR" => 'techreport',
-      "TN" => 'techreport',
-      "SL" => 'article',
-      "LR" => 'techreport',
-      "OTH" => 'misc',
-      "BR" => 'patent',
-      "CR" => 'techreport',
-      "ECR" => 'techreport'
+      "TM": 'techreport',
+      "TR": 'techreport',
+      "TN": 'techreport',
+      "SL": 'article',
+      "LR": 'techreport',
+      "OTH": 'misc',
+      "BR": 'patent',
+      "CR": 'techreport',
+      "ECR": 'techreport'
   }
 
   BIBTEX_SUBTYPE = {
-      "TM" => 'Technical Memorandum',
-      "TR" => 'Technical Report',
-      "TN" => 'Technical Note',
-      "SL" => 'Article',
-      "LR" => 'Letter Report',
-      "OTH" => 'Others',
-      "BR" => 'Patent',
-      "CR" => 'Contract Report',
-      "ECR" => 'E. Contract Report'
+      "TM": 'Technical Memorandum',
+      "TR": 'Technical Report',
+      "TN": 'Technical Note',
+      "SL": 'Article',
+      "LR": 'Letter Report',
+      "OTH": 'Others',
+      "BR": 'Patent',
+      "CR": 'Contract Report',
+      "ECR": 'E. Contract Report'
   }
 
   def self.fields

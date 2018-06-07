@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: { case_sensitive: false }
-  validates_format_of :email, :with => Devise::email_regexp
+  validates_format_of :email, with: Devise::email_regexp
 
   validates :password, length: { minimum: 8 }, unless: -> (u) { u.password.nil? }
   validates :password, presence: true, confirmation: true, if: -> (u) { u.id.nil? }

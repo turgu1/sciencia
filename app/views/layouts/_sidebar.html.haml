@@ -2,5 +2,5 @@
   #user-actions.well
     %ul.nav.nav-list
       %li.nav-header
-        = link_to "[#{current_user.username}]",  current_user.person_id ? person_path(current_user.person_id) : '#', :remote => true
+        = link_to "[#{current_user.username}]",  current_user.person_id ? person_path(current_user.person_id) : '#', remote: true
       %li.divider

@@ -23,7 +23,7 @@ describe PeerReviewsController do
   # This should return the minimal set of attributes required to create a valid
   # PeerReview. As you add validations to PeerReview, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe PeerReviewsController do
   describe "GET show" do
     it "assigns the requested peer_review as @peer_review" do
       peer_review = PeerReview.create! valid_attributes
-      get :show, {:id => peer_review.to_param}, valid_session
+      get :show, {id: peer_review.to_param}, valid_session
       assigns(:peer_review).should eq(peer_review)
     end
   end
@@ -56,7 +56,7 @@ describe PeerReviewsController do
   describe "GET edit" do
     it "assigns the requested peer_review as @peer_review" do
       peer_review = PeerReview.create! valid_attributes
-      get :edit, {:id => peer_review.to_param}, valid_session
+      get :edit, {id: peer_review.to_param}, valid_session
       assigns(:peer_review).should eq(peer_review)
     end
   end
@@ -65,18 +65,18 @@ describe PeerReviewsController do
     describe "with valid params" do
       it "creates a new PeerReview" do
         expect {
-          post :create, {:peer_review => valid_attributes}, valid_session
+          post :create, {peer_review: valid_attributes}, valid_session
         }.to change(PeerReview, :count).by(1)
       end
 
       it "assigns a newly created peer_review as @peer_review" do
-        post :create, {:peer_review => valid_attributes}, valid_session
+        post :create, {peer_review: valid_attributes}, valid_session
         assigns(:peer_review).should be_a(PeerReview)
         assigns(:peer_review).should be_persisted
       end
 
       it "redirects to the created peer_review" do
-        post :create, {:peer_review => valid_attributes}, valid_session
+        post :create, {peer_review: valid_attributes}, valid_session
         response.should redirect_to(PeerReview.last)
       end
     end
@@ -85,14 +85,14 @@ describe PeerReviewsController do
       it "assigns a newly created but unsaved peer_review as @peer_review" do
         # Trigger the behavior that occurs when invalid params are submitted
         PeerReview.any_instance.stub(:save).and_return(false)
-        post :create, {:peer_review => { "caption" => "invalid value" }}, valid_session
+        post :create, {peer_review: { "caption": "invalid value" }}, valid_session
         assigns(:peer_review).should be_a_new(PeerReview)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         PeerReview.any_instance.stub(:save).and_return(false)
-        post :create, {:peer_review => { "caption" => "invalid value" }}, valid_session
+        post :create, {peer_review: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe PeerReviewsController do
         # specifies that the PeerReview created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        PeerReview.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => peer_review.to_param, :peer_review => { "caption" => "MyString" }}, valid_session
+        PeerReview.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: peer_review.to_param, peer_review: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested peer_review as @peer_review" do
         peer_review = PeerReview.create! valid_attributes
-        put :update, {:id => peer_review.to_param, :peer_review => valid_attributes}, valid_session
+        put :update, {id: peer_review.to_param, peer_review: valid_attributes}, valid_session
         assigns(:peer_review).should eq(peer_review)
       end
 
       it "redirects to the peer_review" do
         peer_review = PeerReview.create! valid_attributes
-        put :update, {:id => peer_review.to_param, :peer_review => valid_attributes}, valid_session
+        put :update, {id: peer_review.to_param, peer_review: valid_attributes}, valid_session
         response.should redirect_to(peer_review)
       end
     end
@@ -128,7 +128,7 @@ describe PeerReviewsController do
         peer_review = PeerReview.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         PeerReview.any_instance.stub(:save).and_return(false)
-        put :update, {:id => peer_review.to_param, :peer_review => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: peer_review.to_param, peer_review: { "caption": "invalid value" }}, valid_session
         assigns(:peer_review).should eq(peer_review)
       end
 
@@ -136,7 +136,7 @@ describe PeerReviewsController do
         peer_review = PeerReview.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         PeerReview.any_instance.stub(:save).and_return(false)
-        put :update, {:id => peer_review.to_param, :peer_review => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: peer_review.to_param, peer_review: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe PeerReviewsController do
     it "destroys the requested peer_review" do
       peer_review = PeerReview.create! valid_attributes
       expect {
-        delete :destroy, {:id => peer_review.to_param}, valid_session
+        delete :destroy, {id: peer_review.to_param}, valid_session
       }.to change(PeerReview, :count).by(-1)
     end
 
     it "redirects to the peer_reviews list" do
       peer_review = PeerReview.create! valid_attributes
-      delete :destroy, {:id => peer_review.to_param}, valid_session
+      delete :destroy, {id: peer_review.to_param}, valid_session
       response.should redirect_to(peer_reviews_url)
     end
   end

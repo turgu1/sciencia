@@ -23,7 +23,7 @@ describe Dictionaries::InstitutionsController do
   # This should return the minimal set of attributes required to create a valid
   # Dictionaries::Institution. As you add validations to Dictionaries::Institution, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe Dictionaries::InstitutionsController do
   describe "GET show" do
     it "assigns the requested dictionaries_institution as @dictionaries_institution" do
       institution = Dictionaries::Institution.create! valid_attributes
-      get :show, {:id => institution.to_param}, valid_session
+      get :show, {id: institution.to_param}, valid_session
       assigns(:dictionaries_institution).should eq(institution)
     end
   end
@@ -56,7 +56,7 @@ describe Dictionaries::InstitutionsController do
   describe "GET edit" do
     it "assigns the requested dictionaries_institution as @dictionaries_institution" do
       institution = Dictionaries::Institution.create! valid_attributes
-      get :edit, {:id => institution.to_param}, valid_session
+      get :edit, {id: institution.to_param}, valid_session
       assigns(:dictionaries_institution).should eq(institution)
     end
   end
@@ -65,18 +65,18 @@ describe Dictionaries::InstitutionsController do
     describe "with valid params" do
       it "creates a new Dictionaries::Institution" do
         expect {
-          post :create, {:dictionaries_institution => valid_attributes}, valid_session
+          post :create, {dictionaries_institution: valid_attributes}, valid_session
         }.to change(Dictionaries::Institution, :count).by(1)
       end
 
       it "assigns a newly created dictionaries_institution as @dictionaries_institution" do
-        post :create, {:dictionaries_institution => valid_attributes}, valid_session
+        post :create, {dictionaries_institution: valid_attributes}, valid_session
         assigns(:dictionaries_institution).should be_a(Dictionaries::Institution)
         assigns(:dictionaries_institution).should be_persisted
       end
 
       it "redirects to the created dictionaries_institution" do
-        post :create, {:dictionaries_institution => valid_attributes}, valid_session
+        post :create, {dictionaries_institution: valid_attributes}, valid_session
         response.should redirect_to(Dictionaries::Institution.last)
       end
     end
@@ -85,14 +85,14 @@ describe Dictionaries::InstitutionsController do
       it "assigns a newly created but unsaved dictionaries_institution as @dictionaries_institution" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Institution.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_institution => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_institution: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_institution).should be_a_new(Dictionaries::Institution)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Institution.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_institution => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_institution: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe Dictionaries::InstitutionsController do
         # specifies that the Dictionaries::Institution created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Dictionaries::Institution.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => institution.to_param, :dictionaries_institution => { "caption" => "MyString" }}, valid_session
+        Dictionaries::Institution.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: institution.to_param, dictionaries_institution: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested dictionaries_institution as @dictionaries_institution" do
         institution = Dictionaries::Institution.create! valid_attributes
-        put :update, {:id => institution.to_param, :dictionaries_institution => valid_attributes}, valid_session
+        put :update, {id: institution.to_param, dictionaries_institution: valid_attributes}, valid_session
         assigns(:dictionaries_institution).should eq(institution)
       end
 
       it "redirects to the dictionaries_institution" do
         institution = Dictionaries::Institution.create! valid_attributes
-        put :update, {:id => institution.to_param, :dictionaries_institution => valid_attributes}, valid_session
+        put :update, {id: institution.to_param, dictionaries_institution: valid_attributes}, valid_session
         response.should redirect_to(institution)
       end
     end
@@ -128,7 +128,7 @@ describe Dictionaries::InstitutionsController do
         institution = Dictionaries::Institution.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Institution.any_instance.stub(:save).and_return(false)
-        put :update, {:id => institution.to_param, :dictionaries_institution => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: institution.to_param, dictionaries_institution: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_institution).should eq(institution)
       end
 
@@ -136,7 +136,7 @@ describe Dictionaries::InstitutionsController do
         institution = Dictionaries::Institution.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Institution.any_instance.stub(:save).and_return(false)
-        put :update, {:id => institution.to_param, :dictionaries_institution => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: institution.to_param, dictionaries_institution: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe Dictionaries::InstitutionsController do
     it "destroys the requested dictionaries_institution" do
       institution = Dictionaries::Institution.create! valid_attributes
       expect {
-        delete :destroy, {:id => institution.to_param}, valid_session
+        delete :destroy, {id: institution.to_param}, valid_session
       }.to change(Dictionaries::Institution, :count).by(-1)
     end
 
     it "redirects to the dictionaries_institutions list" do
       institution = Dictionaries::Institution.create! valid_attributes
-      delete :destroy, {:id => institution.to_param}, valid_session
+      delete :destroy, {id: institution.to_param}, valid_session
       response.should redirect_to(dictionaries_institutions_url)
     end
   end

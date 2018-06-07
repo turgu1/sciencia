@@ -12,11 +12,11 @@ describe DocumentsController do
     end
 
     it "routes to #show" do
-      get("/documents/1").should route_to("documents#show", :id => "1")
+      get("/documents/1").should route_to("documents#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/documents/1/edit").should route_to("documents#edit", :id => "1")
+      get("/documents/1/edit").should route_to("documents#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe DocumentsController do
     end
 
     it "routes to #update" do
-      put("/documents/1").should route_to("documents#update", :id => "1")
+      put("/documents/1").should route_to("documents#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/documents/1").should route_to("documents#destroy", :id => "1")
+      delete("/documents/1").should route_to("documents#destroy", id: "1")
     end
 
   end

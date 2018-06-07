@@ -12,11 +12,11 @@ describe Dictionaries::LanguagesController do
     end
 
     it "routes to #show" do
-      get("/dictionaries/languages/1").should route_to("dictionaries/languages#show", :id => "1")
+      get("/dictionaries/languages/1").should route_to("dictionaries/languages#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/dictionaries/languages/1/edit").should route_to("dictionaries/languages#edit", :id => "1")
+      get("/dictionaries/languages/1/edit").should route_to("dictionaries/languages#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe Dictionaries::LanguagesController do
     end
 
     it "routes to #update" do
-      put("/dictionaries/languages/1").should route_to("dictionaries/languages#update", :id => "1")
+      put("/dictionaries/languages/1").should route_to("dictionaries/languages#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/dictionaries/languages/1").should route_to("dictionaries/languages#destroy", :id => "1")
+      delete("/dictionaries/languages/1").should route_to("dictionaries/languages#destroy", id: "1")
     end
 
   end

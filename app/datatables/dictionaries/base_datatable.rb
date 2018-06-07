@@ -23,9 +23,9 @@ class Dictionaries::BaseDatatable
     def data
       items.map do |item|
         {
-          'DT_RowId' => "DICT_#{item.id}",
-          '0' => item.caption,
-          '1' => [all_actions(item, item.caption), replace_action(item)].join(' ').html_safe
+          'DT_RowId': "DICT_#{item.id}",
+          '0': item.caption,
+          '1': [all_actions(item, item.caption), replace_action(item)].join(' ').html_safe
         }
       end
     end

@@ -17,7 +17,7 @@ namespace :data do
           puts "-----> Synchronizing database schema with current system in production:"
           
           with rails_env: fetch(:rails_env) do
-            execute :rake, 'db:migrate VERSION=20131015182741'
+            execute :rake, 'db:migrate'
           end
         end
 

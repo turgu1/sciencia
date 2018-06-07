@@ -8,4 +8,4 @@
     .col-md-8
       = render 'documents_info_links'
 
-= render :partial => 'documents/index', locals: { parent_klass: 'Person', parent_id: @person.id }
+= render partial: 'documents/index', locals: { parent_klass: 'Person', parent_id: @person.id }

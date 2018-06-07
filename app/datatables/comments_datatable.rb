@@ -10,10 +10,10 @@ class CommentsDatatable < BaseDatatable
     def data
       items.map do |item|
         {
-            '0' => item.comment,
-            '1' => item.user.try(:username) || 'Unknown',
-            '2' => item.entry_time.getlocal.strftime('%F %T'),
-            '3' => all_actions(item, item.comment)
+            '0': item.comment,
+            '1': item.user.try(:username) || 'Unknown',
+            '2': item.entry_time.getlocal.strftime('%F %T'),
+            '3': all_actions(item, item.comment)
         }
       end
     end

@@ -12,11 +12,11 @@ describe Dictionaries::PublishersController do
     end
 
     it "routes to #show" do
-      get("/dictionaries/publishers/1").should route_to("dictionaries/publishers#show", :id => "1")
+      get("/dictionaries/publishers/1").should route_to("dictionaries/publishers#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/dictionaries/publishers/1/edit").should route_to("dictionaries/publishers#edit", :id => "1")
+      get("/dictionaries/publishers/1/edit").should route_to("dictionaries/publishers#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe Dictionaries::PublishersController do
     end
 
     it "routes to #update" do
-      put("/dictionaries/publishers/1").should route_to("dictionaries/publishers#update", :id => "1")
+      put("/dictionaries/publishers/1").should route_to("dictionaries/publishers#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/dictionaries/publishers/1").should route_to("dictionaries/publishers#destroy", :id => "1")
+      delete("/dictionaries/publishers/1").should route_to("dictionaries/publishers#destroy", id: "1")
     end
 
   end

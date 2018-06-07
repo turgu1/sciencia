@@ -23,7 +23,7 @@ describe Dictionaries::LanguagesController do
   # This should return the minimal set of attributes required to create a valid
   # Dictionaries::Language. As you add validations to Dictionaries::Language, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe Dictionaries::LanguagesController do
   describe "GET show" do
     it "assigns the requested dictionaries_language as @dictionaries_language" do
       language = Dictionaries::Language.create! valid_attributes
-      get :show, {:id => language.to_param}, valid_session
+      get :show, {id: language.to_param}, valid_session
       assigns(:dictionaries_language).should eq(language)
     end
   end
@@ -56,7 +56,7 @@ describe Dictionaries::LanguagesController do
   describe "GET edit" do
     it "assigns the requested dictionaries_language as @dictionaries_language" do
       language = Dictionaries::Language.create! valid_attributes
-      get :edit, {:id => language.to_param}, valid_session
+      get :edit, {id: language.to_param}, valid_session
       assigns(:dictionaries_language).should eq(language)
     end
   end
@@ -65,18 +65,18 @@ describe Dictionaries::LanguagesController do
     describe "with valid params" do
       it "creates a new Dictionaries::Language" do
         expect {
-          post :create, {:dictionaries_language => valid_attributes}, valid_session
+          post :create, {dictionaries_language: valid_attributes}, valid_session
         }.to change(Dictionaries::Language, :count).by(1)
       end
 
       it "assigns a newly created dictionaries_language as @dictionaries_language" do
-        post :create, {:dictionaries_language => valid_attributes}, valid_session
+        post :create, {dictionaries_language: valid_attributes}, valid_session
         assigns(:dictionaries_language).should be_a(Dictionaries::Language)
         assigns(:dictionaries_language).should be_persisted
       end
 
       it "redirects to the created dictionaries_language" do
-        post :create, {:dictionaries_language => valid_attributes}, valid_session
+        post :create, {dictionaries_language: valid_attributes}, valid_session
         response.should redirect_to(Dictionaries::Language.last)
       end
     end
@@ -85,14 +85,14 @@ describe Dictionaries::LanguagesController do
       it "assigns a newly created but unsaved dictionaries_language as @dictionaries_language" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Language.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_language => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_language: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_language).should be_a_new(Dictionaries::Language)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Language.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_language => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_language: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe Dictionaries::LanguagesController do
         # specifies that the Dictionaries::Language created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Dictionaries::Language.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => language.to_param, :dictionaries_language => { "caption" => "MyString" }}, valid_session
+        Dictionaries::Language.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: language.to_param, dictionaries_language: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested dictionaries_language as @dictionaries_language" do
         language = Dictionaries::Language.create! valid_attributes
-        put :update, {:id => language.to_param, :dictionaries_language => valid_attributes}, valid_session
+        put :update, {id: language.to_param, dictionaries_language: valid_attributes}, valid_session
         assigns(:dictionaries_language).should eq(language)
       end
 
       it "redirects to the dictionaries_language" do
         language = Dictionaries::Language.create! valid_attributes
-        put :update, {:id => language.to_param, :dictionaries_language => valid_attributes}, valid_session
+        put :update, {id: language.to_param, dictionaries_language: valid_attributes}, valid_session
         response.should redirect_to(language)
       end
     end
@@ -128,7 +128,7 @@ describe Dictionaries::LanguagesController do
         language = Dictionaries::Language.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Language.any_instance.stub(:save).and_return(false)
-        put :update, {:id => language.to_param, :dictionaries_language => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: language.to_param, dictionaries_language: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_language).should eq(language)
       end
 
@@ -136,7 +136,7 @@ describe Dictionaries::LanguagesController do
         language = Dictionaries::Language.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Language.any_instance.stub(:save).and_return(false)
-        put :update, {:id => language.to_param, :dictionaries_language => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: language.to_param, dictionaries_language: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe Dictionaries::LanguagesController do
     it "destroys the requested dictionaries_language" do
       language = Dictionaries::Language.create! valid_attributes
       expect {
-        delete :destroy, {:id => language.to_param}, valid_session
+        delete :destroy, {id: language.to_param}, valid_session
       }.to change(Dictionaries::Language, :count).by(-1)
     end
 
     it "redirects to the dictionaries_languages list" do
       language = Dictionaries::Language.create! valid_attributes
-      delete :destroy, {:id => language.to_param}, valid_session
+      delete :destroy, {id: language.to_param}, valid_session
       response.should redirect_to(dictionaries_languages_url)
     end
   end

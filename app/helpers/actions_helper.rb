@@ -10,9 +10,9 @@ module ActionsHelper
 
     link_to(
         'Download',
-        url_for(:controller => entry.class.name.pluralize.underscore,
-                :action => :download,
-                :id => entry.id),
+        url_for(controller:  entry.class.name.pluralize.underscore,
+                action:  :download,
+                id:  entry.id),
         my_options
     ) if can? :read, entry
   end
@@ -24,9 +24,9 @@ module ActionsHelper
 
     remote_link_to(
         'Move',
-        url_for(:controller => entry.class.name.pluralize.underscore,
-                :action => :move,
-                :id => entry.id),
+        url_for(controller:  entry.class.name.pluralize.underscore,
+                action:  :move,
+                id:  entry.id),
         my_options
     ) if can? :manage, entry
   end
@@ -38,9 +38,9 @@ module ActionsHelper
 
     remote_link_to(
         'Replace',
-        url_for(:controller => entry.class.name.pluralize.underscore,
-                :action => :replace,
-                :id => entry.id),
+        url_for(controller:  entry.class.name.pluralize.underscore,
+                action:  :replace,
+                id:  entry.id),
         my_options
     ) if can? :manage, entry
   end

@@ -1,11 +1,11 @@
 replace_content(
     '#modal-info',
     "<%= j(render(
-            :partial => 'show_modal',
-            :object => @security_classification,
-            :locals => {
-                :title => @security_classification.caption,
-                :return_to => security_classifications_path,
-                :fields => [:caption, :abbreviation, :title_marker, :order]})) %>");
+            partial: 'show_modal',
+            object: @security_classification,
+            locals: {
+                title: @security_classification.caption,
+                return_to: security_classifications_path,
+                fields: [:caption, :abbreviation, :title_marker, :order]})) %>");
 
 $('#modal-dialog').modal({ backdrop: false });

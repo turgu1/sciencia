@@ -1,10 +1,10 @@
 class Organisation < ApplicationRecord
-  has_many :people, inverse_of: :organisation, :dependent => :destroy
+  has_many :people, inverse_of: :organisation, dependent: :destroy
   #has_and_belongs_to_many :users  STRANGE???
 
-  validates :name, :abbreviation, :order, :presence => true
-  validates :name, :abbreviation, :uniqueness => true
-  validates :order, :numericality =>  { :only_integer => true, :greater_than_or_equal_to => 0 }
+  validates :name, :abbreviation, :order, presence: true
+  validates :name, :abbreviation, uniqueness: true
+  validates :order, numericality:  { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :others,  -> { where(other: true) }
   scope :main,    -> { where(other: false) }

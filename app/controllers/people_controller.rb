@@ -91,13 +91,13 @@ class PeopleController < ApplicationController
       # logger.debug "====== @document_structure.inspect ====="
       # logger.debug @document_structure.inspect
 
-      @locals = { :person => @person,
-                  :selection_params => {
-                    :from_month => ((mparams[:all_publications] == '0') ? mparams[:from_month].to_i : 0),
-                    :from_year => ((mparams[:all_publications] == '0') ? mparams[:from_year].to_i : 0),
-                    :from_selection => mparams[:from_selection] == '1',
-                    :selection => mparams[:selection].split(',').map { |s| s.to_i },
-                    :all => mparams[:all_publications] == '1' } }
+      @locals = { person:  @person,
+                  selection_params:  {
+                    from_month:  ((mparams[:all_publications] == '0') ? mparams[:from_month].to_i : 0),
+                    from_year:  ((mparams[:all_publications] == '0') ? mparams[:from_year].to_i : 0),
+                    from_selection:  mparams[:from_selection] == '1',
+                    selection:  mparams[:selection].split(',').map { |s| s.to_i },
+                    all:  mparams[:all_publications] == '1' } }
 
       # logger.debug "====== @local.inspect ====="
       # logger.debug @locals.inspect
@@ -148,10 +148,10 @@ class PeopleController < ApplicationController
     else
       # Ask for parameters through the publication_list_params.js.erb partial
       fmt = params[:the_format] == 'html' ? :html : params[:the_format].to_sym
-      @target = publication_list_person_path(params[:id], :format => fmt)
-      @format = { :html => 'WEB(HTML)', :rtf => 'WORD', :bib => 'BibTeX', :xml => 'XML' }[params[:the_format].to_sym] || 'ERROR!!!'
+      @target = publication_list_person_path(params[:id], format:  fmt)
+      @format = { html:  'WEB(HTML)', rtf:  'WORD', bib:  'BibTeX', xml:  'XML' }[params[:the_format].to_sym] || 'ERROR!!!'
       respond_to do |format|
-        format.js { render :action => :publication_list_params }
+        format.js { render action:  :publication_list_params }
       end
     end
   end

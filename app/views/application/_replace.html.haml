@@ -16,6 +16,6 @@
     = f.input :delete_after, as: :boolean, hint: "The old #{table_name.downcase} will be deleted after replacement."
 
   .form-actions
-    = f.button :submit, "Do Replace", :confirm => "Replacing #{table_name} with selected item. Are-you sure?"
+    = f.button :submit, "Do Replace", confirm: "Replacing #{table_name} with selected item. Are-you sure?"
 
 = remote_link_to 'Back', @return_path

@@ -12,11 +12,11 @@ describe Dictionaries::SchoolsController do
     end
 
     it "routes to #show" do
-      get("/dictionaries/schools/1").should route_to("dictionaries/schools#show", :id => "1")
+      get("/dictionaries/schools/1").should route_to("dictionaries/schools#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/dictionaries/schools/1/edit").should route_to("dictionaries/schools#edit", :id => "1")
+      get("/dictionaries/schools/1/edit").should route_to("dictionaries/schools#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe Dictionaries::SchoolsController do
     end
 
     it "routes to #update" do
-      put("/dictionaries/schools/1").should route_to("dictionaries/schools#update", :id => "1")
+      put("/dictionaries/schools/1").should route_to("dictionaries/schools#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/dictionaries/schools/1").should route_to("dictionaries/schools#destroy", :id => "1")
+      delete("/dictionaries/schools/1").should route_to("dictionaries/schools#destroy", id: "1")
     end
 
   end

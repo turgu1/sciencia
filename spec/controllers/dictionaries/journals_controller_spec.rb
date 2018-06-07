@@ -23,7 +23,7 @@ describe Dictionaries::JournalsController do
   # This should return the minimal set of attributes required to create a valid
   # Dictionaries::Journal. As you add validations to Dictionaries::Journal, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe Dictionaries::JournalsController do
   describe "GET show" do
     it "assigns the requested dictionaries_journal as @dictionaries_journal" do
       journal = Dictionaries::Journal.create! valid_attributes
-      get :show, {:id => journal.to_param}, valid_session
+      get :show, {id: journal.to_param}, valid_session
       assigns(:dictionaries_journal).should eq(journal)
     end
   end
@@ -56,7 +56,7 @@ describe Dictionaries::JournalsController do
   describe "GET edit" do
     it "assigns the requested dictionaries_journal as @dictionaries_journal" do
       journal = Dictionaries::Journal.create! valid_attributes
-      get :edit, {:id => journal.to_param}, valid_session
+      get :edit, {id: journal.to_param}, valid_session
       assigns(:dictionaries_journal).should eq(journal)
     end
   end
@@ -65,18 +65,18 @@ describe Dictionaries::JournalsController do
     describe "with valid params" do
       it "creates a new Dictionaries::Journal" do
         expect {
-          post :create, {:dictionaries_journal => valid_attributes}, valid_session
+          post :create, {dictionaries_journal: valid_attributes}, valid_session
         }.to change(Dictionaries::Journal, :count).by(1)
       end
 
       it "assigns a newly created dictionaries_journal as @dictionaries_journal" do
-        post :create, {:dictionaries_journal => valid_attributes}, valid_session
+        post :create, {dictionaries_journal: valid_attributes}, valid_session
         assigns(:dictionaries_journal).should be_a(Dictionaries::Journal)
         assigns(:dictionaries_journal).should be_persisted
       end
 
       it "redirects to the created dictionaries_journal" do
-        post :create, {:dictionaries_journal => valid_attributes}, valid_session
+        post :create, {dictionaries_journal: valid_attributes}, valid_session
         response.should redirect_to(Dictionaries::Journal.last)
       end
     end
@@ -85,14 +85,14 @@ describe Dictionaries::JournalsController do
       it "assigns a newly created but unsaved dictionaries_journal as @dictionaries_journal" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Journal.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_journal => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_journal: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_journal).should be_a_new(Dictionaries::Journal)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Journal.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_journal => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_journal: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe Dictionaries::JournalsController do
         # specifies that the Dictionaries::Journal created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Dictionaries::Journal.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => journal.to_param, :dictionaries_journal => { "caption" => "MyString" }}, valid_session
+        Dictionaries::Journal.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: journal.to_param, dictionaries_journal: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested dictionaries_journal as @dictionaries_journal" do
         journal = Dictionaries::Journal.create! valid_attributes
-        put :update, {:id => journal.to_param, :dictionaries_journal => valid_attributes}, valid_session
+        put :update, {id: journal.to_param, dictionaries_journal: valid_attributes}, valid_session
         assigns(:dictionaries_journal).should eq(journal)
       end
 
       it "redirects to the dictionaries_journal" do
         journal = Dictionaries::Journal.create! valid_attributes
-        put :update, {:id => journal.to_param, :dictionaries_journal => valid_attributes}, valid_session
+        put :update, {id: journal.to_param, dictionaries_journal: valid_attributes}, valid_session
         response.should redirect_to(journal)
       end
     end
@@ -128,7 +128,7 @@ describe Dictionaries::JournalsController do
         journal = Dictionaries::Journal.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Journal.any_instance.stub(:save).and_return(false)
-        put :update, {:id => journal.to_param, :dictionaries_journal => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: journal.to_param, dictionaries_journal: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_journal).should eq(journal)
       end
 
@@ -136,7 +136,7 @@ describe Dictionaries::JournalsController do
         journal = Dictionaries::Journal.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Journal.any_instance.stub(:save).and_return(false)
-        put :update, {:id => journal.to_param, :dictionaries_journal => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: journal.to_param, dictionaries_journal: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe Dictionaries::JournalsController do
     it "destroys the requested dictionaries_journal" do
       journal = Dictionaries::Journal.create! valid_attributes
       expect {
-        delete :destroy, {:id => journal.to_param}, valid_session
+        delete :destroy, {id: journal.to_param}, valid_session
       }.to change(Dictionaries::Journal, :count).by(-1)
     end
 
     it "redirects to the dictionaries_journals list" do
       journal = Dictionaries::Journal.create! valid_attributes
-      delete :destroy, {:id => journal.to_param}, valid_session
+      delete :destroy, {id: journal.to_param}, valid_session
       response.should redirect_to(dictionaries_journals_url)
     end
   end

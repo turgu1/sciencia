@@ -32,26 +32,26 @@ gem 'jquery-fileupload-rails'
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'html2haml'
   gem 'listen',                     '>= 3.1.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen',      '~> 2.0.0'
   gem 'rails_layout'   # layout template generator
-  gem 'capistrano',                 '~> 3.10',  :require => false
-  gem 'capistrano-bundler',         '~> 1.3',   :require => false
-  gem 'capistrano-rails',           '~> 1.3.1', :require => false
-  gem 'capistrano-rbenv',           '~> 2.1',   :require => false
-  gem 'capistrano-safe-deploy-to',  '~> 1.1.1', :require => false
-  gem 'capistrano-ssh-doctor',      '~> 1.0',   :require => false
-  gem 'capistrano-secrets-yml',     '~> 1.1.0', :require => false
+  gem 'capistrano',                 '~> 3.10',  require: false
+  gem 'capistrano-bundler',         '~> 1.3',   require: false
+  gem 'capistrano-rails',           '~> 1.3.1', require: false
+  gem 'capistrano-rbenv',           '~> 2.1',   require: false
+  gem 'capistrano-safe-deploy-to',  '~> 1.1.1', require: false
+  gem 'capistrano-ssh-doctor',      '~> 1.0',   require: false
+  gem 'capistrano-secrets-yml',     '~> 1.1.0', require: false
   gem 'sshkit-sudo'
-  gem 'capistrano-unicorn-nginx',   '~> 5.2.0', :require => false
-  gem 'capistrano-postgresql',      '~> 5.0.1', :require => false
+  gem 'capistrano-unicorn-nginx',   '~> 5.2.0', require: false
+  gem 'capistrano-postgresql',      '~> 5.0.1', require: false
 end
 
 group :development, :test do
-  gem 'factory_bot_rails',          '~> 4.8.2', :require => false
+  gem 'factory_bot_rails',          '~> 4.8.2', require: false
   gem 'rspec-rails'
   gem 'puma',                         '~> 3.11'
 end

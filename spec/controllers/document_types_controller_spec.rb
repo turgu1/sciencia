@@ -23,7 +23,7 @@ describe DocumentTypesController do
   # This should return the minimal set of attributes required to create a valid
   # DocumentType. As you add validations to DocumentType, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe DocumentTypesController do
   describe "GET show" do
     it "assigns the requested document_type as @document_type" do
       document_type = DocumentType.create! valid_attributes
-      get :show, {:id => document_type.to_param}, valid_session
+      get :show, {id: document_type.to_param}, valid_session
       assigns(:document_type).should eq(document_type)
     end
   end
@@ -56,7 +56,7 @@ describe DocumentTypesController do
   describe "GET edit" do
     it "assigns the requested document_type as @document_type" do
       document_type = DocumentType.create! valid_attributes
-      get :edit, {:id => document_type.to_param}, valid_session
+      get :edit, {id: document_type.to_param}, valid_session
       assigns(:document_type).should eq(document_type)
     end
   end
@@ -65,18 +65,18 @@ describe DocumentTypesController do
     describe "with valid params" do
       it "creates a new DocumentType" do
         expect {
-          post :create, {:document_type => valid_attributes}, valid_session
+          post :create, {document_type: valid_attributes}, valid_session
         }.to change(DocumentType, :count).by(1)
       end
 
       it "assigns a newly created document_type as @document_type" do
-        post :create, {:document_type => valid_attributes}, valid_session
+        post :create, {document_type: valid_attributes}, valid_session
         assigns(:document_type).should be_a(DocumentType)
         assigns(:document_type).should be_persisted
       end
 
       it "redirects to the created document_type" do
-        post :create, {:document_type => valid_attributes}, valid_session
+        post :create, {document_type: valid_attributes}, valid_session
         response.should redirect_to(DocumentType.last)
       end
     end
@@ -85,14 +85,14 @@ describe DocumentTypesController do
       it "assigns a newly created but unsaved document_type as @document_type" do
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentType.any_instance.stub(:save).and_return(false)
-        post :create, {:document_type => { "caption" => "invalid value" }}, valid_session
+        post :create, {document_type: { "caption": "invalid value" }}, valid_session
         assigns(:document_type).should be_a_new(DocumentType)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentType.any_instance.stub(:save).and_return(false)
-        post :create, {:document_type => { "caption" => "invalid value" }}, valid_session
+        post :create, {document_type: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe DocumentTypesController do
         # specifies that the DocumentType created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        DocumentType.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => document_type.to_param, :document_type => { "caption" => "MyString" }}, valid_session
+        DocumentType.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: document_type.to_param, document_type: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested document_type as @document_type" do
         document_type = DocumentType.create! valid_attributes
-        put :update, {:id => document_type.to_param, :document_type => valid_attributes}, valid_session
+        put :update, {id: document_type.to_param, document_type: valid_attributes}, valid_session
         assigns(:document_type).should eq(document_type)
       end
 
       it "redirects to the document_type" do
         document_type = DocumentType.create! valid_attributes
-        put :update, {:id => document_type.to_param, :document_type => valid_attributes}, valid_session
+        put :update, {id: document_type.to_param, document_type: valid_attributes}, valid_session
         response.should redirect_to(document_type)
       end
     end
@@ -128,7 +128,7 @@ describe DocumentTypesController do
         document_type = DocumentType.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentType.any_instance.stub(:save).and_return(false)
-        put :update, {:id => document_type.to_param, :document_type => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: document_type.to_param, document_type: { "caption": "invalid value" }}, valid_session
         assigns(:document_type).should eq(document_type)
       end
 
@@ -136,7 +136,7 @@ describe DocumentTypesController do
         document_type = DocumentType.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentType.any_instance.stub(:save).and_return(false)
-        put :update, {:id => document_type.to_param, :document_type => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: document_type.to_param, document_type: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe DocumentTypesController do
     it "destroys the requested document_type" do
       document_type = DocumentType.create! valid_attributes
       expect {
-        delete :destroy, {:id => document_type.to_param}, valid_session
+        delete :destroy, {id: document_type.to_param}, valid_session
       }.to change(DocumentType, :count).by(-1)
     end
 
     it "redirects to the document_types list" do
       document_type = DocumentType.create! valid_attributes
-      delete :destroy, {:id => document_type.to_param}, valid_session
+      delete :destroy, {id: document_type.to_param}, valid_session
       response.should redirect_to(document_types_url)
     end
   end

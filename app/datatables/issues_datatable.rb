@@ -10,13 +10,13 @@ class IssuesDatatable < BaseDatatable
     def data
       items.map do |item|
         {
-            'DT_RowId' => "ISSUE_#{item.id}",
-            '0' => item.title,
-            '1' => item.state,
-            '2' => item.issue_type,
-            '3' => item.user.try(:username) || 'Unknown!!!',
-            '4' => item.last_update.getlocal.strftime('%F %T'),
-            '5' => all_actions(item, item.title)
+            'DT_RowId': "ISSUE_#{item.id}",
+            '0': item.title,
+            '1': item.state,
+            '2': item.issue_type,
+            '3': item.user.try(:username) || 'Unknown!!!',
+            '4': item.last_update.getlocal.strftime('%F %T'),
+            '5': all_actions(item, item.title)
         }
       end
     end

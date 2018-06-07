@@ -12,11 +12,11 @@ describe EventsController do
     end
 
     it "routes to #show" do
-      get("/events/1").should route_to("events#show", :id => "1")
+      get("/events/1").should route_to("events#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/events/1/edit").should route_to("events#edit", :id => "1")
+      get("/events/1/edit").should route_to("events#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe EventsController do
     end
 
     it "routes to #update" do
-      put("/events/1").should route_to("events#update", :id => "1")
+      put("/events/1").should route_to("events#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/events/1").should route_to("events#destroy", :id => "1")
+      delete("/events/1").should route_to("events#destroy", id: "1")
     end
 
   end

@@ -23,7 +23,7 @@ describe Dictionaries::EditorsController do
   # This should return the minimal set of attributes required to create a valid
   # Dictionaries::Editor. As you add validations to Dictionaries::Editor, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe Dictionaries::EditorsController do
   describe "GET show" do
     it "assigns the requested dictionaries_editor as @dictionaries_editor" do
       editor = Dictionaries::Editor.create! valid_attributes
-      get :show, {:id => editor.to_param}, valid_session
+      get :show, {id: editor.to_param}, valid_session
       assigns(:dictionaries_editor).should eq(editor)
     end
   end
@@ -56,7 +56,7 @@ describe Dictionaries::EditorsController do
   describe "GET edit" do
     it "assigns the requested dictionaries_editor as @dictionaries_editor" do
       editor = Dictionaries::Editor.create! valid_attributes
-      get :edit, {:id => editor.to_param}, valid_session
+      get :edit, {id: editor.to_param}, valid_session
       assigns(:dictionaries_editor).should eq(editor)
     end
   end
@@ -65,18 +65,18 @@ describe Dictionaries::EditorsController do
     describe "with valid params" do
       it "creates a new Dictionaries::Editor" do
         expect {
-          post :create, {:dictionaries_editor => valid_attributes}, valid_session
+          post :create, {dictionaries_editor: valid_attributes}, valid_session
         }.to change(Dictionaries::Editor, :count).by(1)
       end
 
       it "assigns a newly created dictionaries_editor as @dictionaries_editor" do
-        post :create, {:dictionaries_editor => valid_attributes}, valid_session
+        post :create, {dictionaries_editor: valid_attributes}, valid_session
         assigns(:dictionaries_editor).should be_a(Dictionaries::Editor)
         assigns(:dictionaries_editor).should be_persisted
       end
 
       it "redirects to the created dictionaries_editor" do
-        post :create, {:dictionaries_editor => valid_attributes}, valid_session
+        post :create, {dictionaries_editor: valid_attributes}, valid_session
         response.should redirect_to(Dictionaries::Editor.last)
       end
     end
@@ -85,14 +85,14 @@ describe Dictionaries::EditorsController do
       it "assigns a newly created but unsaved dictionaries_editor as @dictionaries_editor" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Editor.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_editor => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_editor: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_editor).should be_a_new(Dictionaries::Editor)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Editor.any_instance.stub(:save).and_return(false)
-        post :create, {:dictionaries_editor => { "caption" => "invalid value" }}, valid_session
+        post :create, {dictionaries_editor: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe Dictionaries::EditorsController do
         # specifies that the Dictionaries::Editor created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Dictionaries::Editor.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => editor.to_param, :dictionaries_editor => { "caption" => "MyString" }}, valid_session
+        Dictionaries::Editor.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: editor.to_param, dictionaries_editor: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested dictionaries_editor as @dictionaries_editor" do
         editor = Dictionaries::Editor.create! valid_attributes
-        put :update, {:id => editor.to_param, :dictionaries_editor => valid_attributes}, valid_session
+        put :update, {id: editor.to_param, dictionaries_editor: valid_attributes}, valid_session
         assigns(:dictionaries_editor).should eq(editor)
       end
 
       it "redirects to the dictionaries_editor" do
         editor = Dictionaries::Editor.create! valid_attributes
-        put :update, {:id => editor.to_param, :dictionaries_editor => valid_attributes}, valid_session
+        put :update, {id: editor.to_param, dictionaries_editor: valid_attributes}, valid_session
         response.should redirect_to(editor)
       end
     end
@@ -128,7 +128,7 @@ describe Dictionaries::EditorsController do
         editor = Dictionaries::Editor.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Editor.any_instance.stub(:save).and_return(false)
-        put :update, {:id => editor.to_param, :dictionaries_editor => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: editor.to_param, dictionaries_editor: { "caption": "invalid value" }}, valid_session
         assigns(:dictionaries_editor).should eq(editor)
       end
 
@@ -136,7 +136,7 @@ describe Dictionaries::EditorsController do
         editor = Dictionaries::Editor.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Dictionaries::Editor.any_instance.stub(:save).and_return(false)
-        put :update, {:id => editor.to_param, :dictionaries_editor => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: editor.to_param, dictionaries_editor: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe Dictionaries::EditorsController do
     it "destroys the requested dictionaries_editor" do
       editor = Dictionaries::Editor.create! valid_attributes
       expect {
-        delete :destroy, {:id => editor.to_param}, valid_session
+        delete :destroy, {id: editor.to_param}, valid_session
       }.to change(Dictionaries::Editor, :count).by(-1)
     end
 
     it "redirects to the dictionaries_editors list" do
       editor = Dictionaries::Editor.create! valid_attributes
-      delete :destroy, {:id => editor.to_param}, valid_session
+      delete :destroy, {id: editor.to_param}, valid_session
       response.should redirect_to(dictionaries_editors_url)
     end
   end

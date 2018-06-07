@@ -1,5 +1,5 @@
 .modal-header
-  %button.close{ :type => "button", 'data-dismiss' => "modal", 'aria-hidden' => true} &times;
+  %button.close{ type: "button", 'data-dismiss' => "modal", 'aria-hidden' => true} &times;
   %h4
     #{@person.complete_name_with_org}
 .modal-body
@@ -7,5 +7,5 @@
   = render partial: 'documents/index2', locals: { parent_klass: 'Person', parent_id: @person.id }
 
 .modal-footer
-  = link_to 'OK', '#', 'data-dismiss' => "modal", :class => 'btn btn-primary'
+  = link_to 'OK', '#', 'data-dismiss' => "modal", class: 'btn btn-primary'
 

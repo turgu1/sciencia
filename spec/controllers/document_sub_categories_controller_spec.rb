@@ -23,7 +23,7 @@ describe DocumentSubCategoriesController do
   # This should return the minimal set of attributes required to create a valid
   # DocumentSubCategory. As you add validations to DocumentSubCategory, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "caption" => "MyString" } }
+  let(:valid_attributes) { { "caption": "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe DocumentSubCategoriesController do
   describe "GET show" do
     it "assigns the requested document_sub_category as @document_sub_category" do
       document_sub_category = DocumentSubCategory.create! valid_attributes
-      get :show, {:id => document_sub_category.to_param}, valid_session
+      get :show, {id: document_sub_category.to_param}, valid_session
       assigns(:document_sub_category).should eq(document_sub_category)
     end
   end
@@ -56,7 +56,7 @@ describe DocumentSubCategoriesController do
   describe "GET edit" do
     it "assigns the requested document_sub_category as @document_sub_category" do
       document_sub_category = DocumentSubCategory.create! valid_attributes
-      get :edit, {:id => document_sub_category.to_param}, valid_session
+      get :edit, {id: document_sub_category.to_param}, valid_session
       assigns(:document_sub_category).should eq(document_sub_category)
     end
   end
@@ -65,18 +65,18 @@ describe DocumentSubCategoriesController do
     describe "with valid params" do
       it "creates a new DocumentSubCategory" do
         expect {
-          post :create, {:document_sub_category => valid_attributes}, valid_session
+          post :create, {document_sub_category: valid_attributes}, valid_session
         }.to change(DocumentSubCategory, :count).by(1)
       end
 
       it "assigns a newly created document_sub_category as @document_sub_category" do
-        post :create, {:document_sub_category => valid_attributes}, valid_session
+        post :create, {document_sub_category: valid_attributes}, valid_session
         assigns(:document_sub_category).should be_a(DocumentSubCategory)
         assigns(:document_sub_category).should be_persisted
       end
 
       it "redirects to the created document_sub_category" do
-        post :create, {:document_sub_category => valid_attributes}, valid_session
+        post :create, {document_sub_category: valid_attributes}, valid_session
         response.should redirect_to(DocumentSubCategory.last)
       end
     end
@@ -85,14 +85,14 @@ describe DocumentSubCategoriesController do
       it "assigns a newly created but unsaved document_sub_category as @document_sub_category" do
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentSubCategory.any_instance.stub(:save).and_return(false)
-        post :create, {:document_sub_category => { "caption" => "invalid value" }}, valid_session
+        post :create, {document_sub_category: { "caption": "invalid value" }}, valid_session
         assigns(:document_sub_category).should be_a_new(DocumentSubCategory)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentSubCategory.any_instance.stub(:save).and_return(false)
-        post :create, {:document_sub_category => { "caption" => "invalid value" }}, valid_session
+        post :create, {document_sub_category: { "caption": "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,19 +106,19 @@ describe DocumentSubCategoriesController do
         # specifies that the DocumentSubCategory created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        DocumentSubCategory.any_instance.should_receive(:update).with({ "caption" => "MyString" })
-        put :update, {:id => document_sub_category.to_param, :document_sub_category => { "caption" => "MyString" }}, valid_session
+        DocumentSubCategory.any_instance.should_receive(:update).with({ "caption": "MyString" })
+        put :update, {id: document_sub_category.to_param, document_sub_category: { "caption": "MyString" }}, valid_session
       end
 
       it "assigns the requested document_sub_category as @document_sub_category" do
         document_sub_category = DocumentSubCategory.create! valid_attributes
-        put :update, {:id => document_sub_category.to_param, :document_sub_category => valid_attributes}, valid_session
+        put :update, {id: document_sub_category.to_param, document_sub_category: valid_attributes}, valid_session
         assigns(:document_sub_category).should eq(document_sub_category)
       end
 
       it "redirects to the document_sub_category" do
         document_sub_category = DocumentSubCategory.create! valid_attributes
-        put :update, {:id => document_sub_category.to_param, :document_sub_category => valid_attributes}, valid_session
+        put :update, {id: document_sub_category.to_param, document_sub_category: valid_attributes}, valid_session
         response.should redirect_to(document_sub_category)
       end
     end
@@ -128,7 +128,7 @@ describe DocumentSubCategoriesController do
         document_sub_category = DocumentSubCategory.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentSubCategory.any_instance.stub(:save).and_return(false)
-        put :update, {:id => document_sub_category.to_param, :document_sub_category => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: document_sub_category.to_param, document_sub_category: { "caption": "invalid value" }}, valid_session
         assigns(:document_sub_category).should eq(document_sub_category)
       end
 
@@ -136,7 +136,7 @@ describe DocumentSubCategoriesController do
         document_sub_category = DocumentSubCategory.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         DocumentSubCategory.any_instance.stub(:save).and_return(false)
-        put :update, {:id => document_sub_category.to_param, :document_sub_category => { "caption" => "invalid value" }}, valid_session
+        put :update, {id: document_sub_category.to_param, document_sub_category: { "caption": "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,13 +146,13 @@ describe DocumentSubCategoriesController do
     it "destroys the requested document_sub_category" do
       document_sub_category = DocumentSubCategory.create! valid_attributes
       expect {
-        delete :destroy, {:id => document_sub_category.to_param}, valid_session
+        delete :destroy, {id: document_sub_category.to_param}, valid_session
       }.to change(DocumentSubCategory, :count).by(-1)
     end
 
     it "redirects to the document_sub_categories list" do
       document_sub_category = DocumentSubCategory.create! valid_attributes
-      delete :destroy, {:id => document_sub_category.to_param}, valid_session
+      delete :destroy, {id: document_sub_category.to_param}, valid_session
       response.should redirect_to(document_sub_categories_url)
     end
   end
