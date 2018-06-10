@@ -1,0 +1,123 @@
+Étape préparatoire pour environnement de production de spaceman/sciencia dans machine virtuelle Ubuntu 18.04 LTS
+
+Les éléments suivants doivent  être ajustés dans le texte pour correspondre aux noms ciblés dans le réseau et sur les ordinateurs impliqués:
+
+  appserv: 
+     Nom du serveur virtuel des applications en production
+
+  appdev:
+     Nom de la machine virtuel d’où les applications seront installées
+
+  admserv: 
+     Nom de l'utilisateur administrateur sur appserv
+
+  admdev: 
+     Nom de l'utilisateur administrateur sur appdev
+
+  userdev: 
+     Nom de l'utilisateur qui servira à démarrer les installations sur appdev (peut être le même utilisateur admdev)
+
+  userserv: 
+     Nom de l'utilisateur qui sera propriétaire des applications en production (ne peut pas être admserv pour des raisons de sécurité)
+
+  
+1. Téléchargement de la version ISO Ubuntu Server 18.04 LTS
+
+2. Installation de l'OS, utilisateur [admserv, admservpassword] et login comme usager admserv
+
+3. Ajouter une entrée dans sudoers pour que l'utilisateur admserv puisse utiliser sudo sans mot de passe: requis pour capistrano. Si possible, utiliser une session en ssh pour se connecter au serveur. Il sera ainsi possible d'effectuer des copier-coller des commandes au lieu de les taper à la main...
+   
+    [on est sur admserv@appserv]
+
+    $ sudo sh -c 'echo "admserv ALL=NOPASSWD: ALL" >/etc/sudoers.d/admserv'
+    $ sudo chmod 440 /etc/sudoers.d/admserv
+
+4. Mise à niveau de l'OS:
+
+   [on est sur admserv@appserv]
+   
+   $ sudo apt update
+   $ sudo apt upgrade
+
+5. Changement de nom de host (s'il n'est pas déjà appserv):
+
+   $ sudo hostname appserv
+   $ sudo nano /etc/hostname   --> modifier ubuntu pour appserv
+   $ sudo nano /etc/hosts      --> modifier ubuntu pour appserv
+
+6. Changement de la date et heure pour EDT ou EST (ville America/Montreal):
+   
+   $ sudo dpkg-reconfigure tzdata
+
+7. Installer anti-virus et outil de gestion réseau
+
+   ... selon les règles de gestion ...
+
+8. Facultatif: sur appserv, ajout de l'adresse IP de appdev dans la table des hosts si le DNS ne contient pas les entrées pour appdev. Sinon, il faut avoir indiqué les adresse IP dans la mise à jour des fichiers ~/Dev/staging.rb et ~/Dev/production.rb dans la première partie de cette installation:
+
+  $ sudo nano /etc/hosts
+
+  Ajouter une entrée:
+
+    x.x.x.x appdev
+
+  <ctrl-x>, <y>
+
+9. Facultatif: Sur appdev, ajout de l'adresse de appserv dans la table des hosts si le DNS ne contient pas les entrées pour appserv. Même commentaire que pour le paragraphe précédent:
+
+  [ on est dans admdev@appdev ou userdev@appdev ]
+
+  $ sudo nano /etc/hosts
+
+  Ajouter une entrée:
+
+    x.x.x.x appserv
+
+  <ctrl-x>, <y>
+
+
+10. Copier id_rsa.pub dans compte admserv@appserv à partir de userdev@appdev
+
+    [on est sur userdev@appdev]
+   
+    S'il n'y a pas de fichier id_rsa dans le compte, le générer de la manière suivante (devrait avoir été effectué dans la procédure de préparation de appdev):
+  
+    $ mkdir ~/.ssh
+    $ chmod 700 ~/.ssh    
+    $ cd ~/.ssh
+    $ ssh-keygen -t rsa -b 4096
+   
+    Copie de id_rsa.pub sur appserv
+   
+    $ scp ~/.ssh/id_rsa.pub admserv@appserv:.
+
+11. Installation de la clé publique ssh pour permettre le login sans mot de passe:
+   
+   [on est sur admserv@appserv]
+   
+   S'il n'y a pas de répertoire .ssh:
+   
+      $ mkdir .ssh
+      $ chmod 700 .ssh
+   
+   $ mv id_rsa.pub ~/.ssh/authorized_keys
+   $ chmod 600 ~/.ssh/authorized_keys
+   
+12. Facultatif: pour empêcher un login via mot de passe (clé RSA uniquement):
+
+   $ sudo nano /etc/ssh/sshd_config
+   
+   Modifier la ligne suivante:
+   
+   #PasswordAuthentication yes
+   
+   pour (enlever le '#' et remplacer 'yes' par 'no'):
+   
+   PasswordAuthentication no
+   
+   <ctrl-x>, <y>
+   
+13. Validation: À partir de userdev@appdev, on doit pouvoir effectuer une commande ssh de login sans mot de passe:
+
+   $ ssh admserv@appserv
+   

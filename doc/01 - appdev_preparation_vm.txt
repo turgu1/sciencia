@@ -1,0 +1,157 @@
+Préparations pour environnement de gestion des installations/mises à niveau de spaceman et sciencia dans machine virtuelle Ubuntu 18.04 LTS
+
+Ce document explique comment préparer le poste virtuel à partir duquel les installations et les mises à jour de spaceman et sciencia pourront être effectuées. Le poste peut également servir au développement de nouvelles fonctionnalités car tous les outils associés à l'environnement de développement seront installés.
+
+Contrairement aux installations effectuées avant 2018, les deux applications seront installées en utilisant le même compte utilisateur sur un seul serveur.
+
+Les deux applications sciencia et spaceman utilisant les mêmes versions de ruby et ruby on rails, leur environnement d'exécution est très similaire. La procédure indiquée ici n'a besoin d'être appliquée qu'une seule fois. Elle contient tous les éléments requis pour les deux applications.
+
+Comme dans l'avenir les deux applications pourraient ne pas être synchronisées dans l'utilisation d'une même version de ruby et ruby on rails, les outils de ces deux technologies seront installés de telle sorte que plusieurs versions pourront cohabiter sur le serveur, ceci grâce à l'outil nommé rbenv.
+
+Voici donc la procédure. Les lignes débutant par un $ sont les commandes à exécuter dans une session ssh ou via une application de type "terminal".
+
+Les éléments suivants doivent être ajustés dans le texte pour correspondre aux noms ciblés dans le réseau et sur les ordinateurs impliqués:
+
+  appserv: 
+     Nom du serveur virtuel des applications en production
+
+  appdev:
+     Nom de la machine virtuel d’où les applications seront installées
+
+  admserv: 
+     Nom de l'utilisateur administrateur sur appserv
+
+  admdev: 
+     Nom de l'utilisateur administrateur sur appdev
+
+  userdev: 
+     Nom de l'utilisateur qui servira à installer les applications à partir de appdev (peut être le même utilisateur admdev)
+
+  userserv: 
+     Nom de l'utilisateur qui sera propriétaire des applications en production (ne peut pas être admserv pour des raisons de sécurité)
+
+1. Téléchargement de la version ISO Ubuntu Desktop 18.04 LTS (ou XUbuntu)
+
+2. Installation de appdev et login comme usager admdev
+
+3. Installation des outils de base:
+   
+   $ sudo apt -y install git
+
+4. Changement de nom de host:
+
+   $ cd /etc
+   $ sudo hostname appdev
+   $ sudo nano hostname       --> modifier ubuntu pour appdev
+   $ sudo nano hosts          --> modifier ubuntu pour appdev
+
+5. Changement de la date et heure pour EST. (choisir America / Montreal):
+   
+   $ sudo dpkg-reconfigure tzdata
+
+6. Installer anti-virus et outil de gestion réseau
+
+7. Création du compte userdev si différent de admdev
+
+   [ on est dans admdev@appdev ]
+
+   $ sudo adduser userdev
+   ... répondre aux questions de l'outil...
+
+   Autoriser le compte à effectuer des commandes sudo (superuser)
+
+   $ sudo usermod -aG sudo userdev
+
+8. login userdev@appdev (ou admdev@appdev si on ne veut pas utiliser un autre utilisateur. On est probablement déjà dans le bon compte)
+
+   Ajouter une entrée dans sudoers pour que l'utilisateur userdev (admdev) puisse utiliser sudo sans mot de passe: requis pour capistrano lors du staging.
+   
+    [si on est sur userdev@appdev]
+
+    $ sudo sh -c 'echo "userdev ALL=NOPASSWD: ALL" >/etc/sudoers.d/userdev'
+    $ sudo chmod 440 /etc/sudoers.d/userdev
+
+    [si on est sur admdev@appdev]
+
+    $ sudo sh -c 'echo "admdev ALL=NOPASSWD: ALL" >/etc/sudoers.d/admdev'
+    $ sudo chmod 440 /etc/sudoers.d/admdev
+
+9. Création de la clé RSA. Sera utilisé pour faciliter les échanges avec ssh entre appdev et appserv dans une prochaine étape (lors de la préparation du serveur appserv)
+
+    $ mkdir ~/.ssh
+    $ chmod 700 ~/.ssh
+    $ cd ~/.ssh
+    $ ssh-keygen -t rsa -b 4096
+
+    La clé publique est ajoutée à admdev pour permettre le staging sans saisie de mot de passe via capistrano:
+
+    $ cp id_rsa.pub authorized_keys
+    $ chmod 600 authorized_keys
+
+10. Téléchargement de l'outil d'installation:
+
+    $ mkdir ~/Dev
+    $ cd ~/Dev
+    $ git clone https://github.com/turgu1/installer.git
+    $ cd installer
+
+11. Lancer le processus d'installation. Celui-ci effectuera les modifications suivantes:
+
+    - mise à niveau de l'OS (apt update/upgrade)
+    - installation de ruby et de ses dépendances
+    - installation de openssh pour permettre l'accès à ce poste en mode ssh
+    - installation de capistrano (applications ruby)
+    - copie de fichier de base production.rb et staging.rb dans le répertoire ~/Dev pour modification ultérieure
+    - téléchargement des applications sciencia et spaceman en provenance de github
+
+    $ ./install.sh
+    $ cd ..
+
+12. Création du certificat nécessaire à nginx pour opérer l'application en mode SSL. Requis pour les installations de spaceman et sciencia.
+
+    La commande suivante lancera la création des fichiers de certificat s'ils n'existent pas déjà. Un ensemble de questions seront posées:
+
+    Country Name (2 letter code) [AU]:
+    State or Province Name (full name) [Some-State]:
+    Locality Name (eg, city) []:
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+    Organizational Unit Name (eg, section) []:
+    Common Name (e.g. server FQDN or YOUR name) []:
+    Email Address []:
+
+    À la question entourant le Common Name (FQDN), il faut répondre en utilisant l'adresse IP du serveur en production (appserv).
+
+    $ spaceman/src/create-certificate.sh
+
+    Le certificat (fichiers nginx-selfsigned.key et nginx-selfsigned.crf) sont générés dans le répertoire courant qui devrait être ~/Dev, de telle sorte qu'il soit accessible pour les deux applications lors du déploiement via capistrano.
+
+13. Préparatifs avant déploiement
+
+   ---- Staging ----
+
+   Modifier les variables afin qu'elles représentent les identifiants locaux. Les valeurs sont les suivantes:
+
+   set :server,    "appdev"
+   set :app_user,  "stageuser"
+   set :superuser, "userdev"
+
+   Il faut donc remplacer 'appdev' pour le nom du poste de développement (ou son adresse IP), 'stageuser' sera le nom de l'utilisateur qui sera généré par le processus d'installation et 'userdev' est le nom du super-utilisateur pour le poste de développement (capacité sudo). Si on a décidé de ne pas créer l'utilisateur userdev à l'étape 7, utiliser admdev.
+
+   $ nano ~/Dev/staging.rb
+
+   ---- Production ----
+
+   Modifier les variables afin qu'elles représentent les identifiants locaux du serveur en production. Les valeurs sont les suivantes:
+
+   set :server,    "appserv"
+   set :app_user,  "userapp"
+   set :superuser, "admserv"
+
+   Il faut donc remplacer 'appserv' pour le nom du serveur en production (ou son adresse IP), 'userapp' sera le nom de l'utilisateur qui sera généré par le processus d'installation et 'admserv' est le nom du super-utilisateur pour le serveur en production (selon les préparatifs qui seront effectués via le document "02 - appserv_preparation_vm.txt")
+
+   $ nano ~/Dev/production.rb
+
+14. Notez l'adresse IP de appdev. Elle sera utile pour la prochaine étape:
+
+   $ ifconfig
+   

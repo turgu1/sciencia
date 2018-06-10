@@ -1,0 +1,159 @@
+Quelques éléments de gestion des applications spaceman et sciencia:
+
+    1. Arrêt / Démarrage des applications sur le serveur
+    2. Pour créer un utilisateur avec tous les privilèges
+    3. Pour générer une copie de sauvegarde des données
+    4. Pour restaurer les données d'une copie de sauvegarde
+    5. Pour automatiser la prise de copies de sauvegarde
+    6. Nettoyage automatisé des prises de copies
+
+1. Arrêt / Démarrage des applications sur le serveur
+
+   Il y a deux méthodes:
+
+   ====== Première méthode =====
+
+   = se connecter en mode terminal sur userdev@appdev
+
+   ----- Pour Spaceman ----
+
+   $ cd ~/Dev/spaceman
+
+   Utiliser une des commandes suivantes selon l'intention:
+
+   $ cap production unicorn:stop
+   $ cap production unicorn:start
+   $ cap production unicorn:restart
+
+   ----- Pour Sciencia ----
+
+   Utiliser une des commandes suivantes selon l'intention:
+   
+   $ cd ~/Dev/sciencia
+
+   Utiliser une des commandes suivantes selon l'intention:
+
+   $ cap production unicorn:stop
+   $ cap production unicorn:start
+   $ cap production unicorn:restart
+
+   ===== Seconde méthode =====
+
+   - Se connecter en mode terminal sur admserv@appserv
+
+   ----- Pour Spaceman ----
+
+   Utiliser une des commandes suivantes selon l'intention:
+
+   $ sudo service unicorn_spaceman_production start
+   $ sudo service unicorn_spaceman_production stop
+   $ sudo service unicorn_spaceman_production restart
+
+   ----- Pour Sciencia ----
+
+   Utiliser une des commandes suivantes selon l'intention:
+   
+   $ sudo service unicorn_sciencia_production start
+   $ sudo service unicorn_sciencia_production stop
+   $ sudo service unicorn_sciencia_production restart
+
+2. Pour créer un utilisateur dans une des applications avec tous les privilèges:
+
+   - Se connecter à l'application via l'interface web
+   - Créer le nouvel utilisateur via l'action "sign-up" apparaissant au bas du formulaire de login, disons qu'il se nomme 'newuser'
+   - ouvrir une fenêtre de type terminal (ssh ou console) sur le serveur
+   - effectuer les commandes suivantes:
+
+   ----- Pour Spaceman ----
+
+   $ sudo -u postgres psql -d spaceman_production
+   UPDATE USERS SET roles = '{admin}' WHERE username = 'newuser';
+   \quit
+
+   ----- Pour Sciencia ----
+
+   $ sudo -u postgres psql -d sciencia_production
+   UPDATE USERS SET roles = '{admin}' WHERE username = 'newuser';
+   \quit
+
+3. Pour générer une copie de sauvegarde des données du serveur sur le poste de développement:
+
+   - Se connecter en mode terminal sur userdev@appdev
+
+   ----- Pour Spaceman ----
+
+   $ cd ~/Dev/spaceman
+   $ cap production db:backup
+
+   ----- Pour Sciencia ----
+
+   $ cd ~/Dev/sciencia
+   $ cap production db:backup
+   
+   Toutes les copies de sauvegarde se retrouvent dans le répertoire ~/Dev/backups sur le poste de développement.
+
+4: Pour restaurer les données d'une copie de sauvegarde:
+
+   ATTENTION! Toutes les données présentent dans la version en cours d'utilisation seront détruites.
+
+   Il faut sélectionner la copie de sauvegarde à restaurer. Elles sont toutes dans le répertoire ~/Dev/backups sur le poste de développement.
+
+   ----- Pour Spaceman -----
+
+   $ cd ~/Dev/spaceman
+   $ cp ../backups/spaceman_data_.....tar.gz .
+   $ cap production unicorn:stop
+   $ cap production db:restore
+   $ cap production unicorn:start
+
+   ----- Pour Sciencia -----
+
+   $ cd ~/Dev/sciencia
+   $ cp ../backups/sciencia_data_.....tar.gz .
+   $ cap production unicorn:stop
+   $ cap production db:restore
+   $ cap production unicorn:start
+
+5. Pour automatiser la prise de copies de sauvegarde:
+
+   Se connecter comme utilisateur userdev@appdev
+
+   Effectuer la commande suivante:
+
+   $ crontab -e
+
+   Choisir nano comme éditeur si demandé par l'outil
+   Ajouter les deux lignes suivantes dans le fichier:
+
+   0 0 * * * cd $HOME/Dev/spaceman; /usr/local/bin/cap production db:backup
+   15 0 * * * cd $HOME/Dev/sciencia; /usr/local/bin/cap production db:backup 
+
+   (il ne doit pas y avoir d'espaces au début de chaque ligne)
+
+   Sauvegarder: <ctrl-x> <y>
+
+   La première commande s’exécutera à minuit tous les soir. La seconde s'exécutera à 00h15.
+
+6. Nettoyage automatisé des prises de copies:
+
+   Chaque prise de copies de sécurité utilisera environ 10 mega-octets d'espace disque. Après un an, on obtiens un peu plus de 3.5 giga-octets...
+
+   Voici une approche pour gérer l'espace requis de manière plus raisonnable:
+
+   a. Chaque jour, une copie de sécurité est effectuée telle qu'implanté au point 5
+
+   b. A chaque début de mois, le script spaceman/src/backup-cleanup.sh est exécuté. Celui-ci prends le dernier backup enregistré pour chaque application et en fait une copie dans le répertoire ~/Dev/backups/monthly. Par la suite, il détruit tous les backups présents dans le répertoire ~/Dev/backups, à l'exception des 7 derniers pour chaque application (ce qui donne 14 fichiers au total). Donc, il y aura toujours 38 backups (76 fichiers) au maximum dans le répertoire ~/Dev/backups
+
+   Pour le mettre en fonction, effectuer la commande suivante comme userdev@appdev:
+
+   $ crontab -e
+
+   Ajouter la ligne qui suit:
+
+   30 0 1 * * cd $HOME/Dev/backups; ../spaceman/src/backup-cleanup.sh
+
+   (il ne doit pas y avoir d'espaces au début de chaque ligne)
+
+   Sauvegarder: <ctrl-x> <y>
+
+   La commande s'exécutera ainsi le premier jour de chaque mois à 00h30.
