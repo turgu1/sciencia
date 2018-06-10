@@ -5,6 +5,9 @@ namespace :data do
 
     on roles :all do |host|
 
+      tar_name_start = "#{fetch(:application)}_data_"
+      main_tar_file  = ""
+
       run_locally do
         main_tar_file  = capture(*%W[bash -c 'files=(#{tar_name_start}*); echo -n "${files[0]}"'])
       end

@@ -60,7 +60,7 @@ Pour ce faire, effectuer les commandes suivantes:
 
    Le staging permet de vérifier que tout fonctionne correctement avant d'effectuer le même processus pour l'environnement de production.
 
-   $ cap staging setup     <--- sera beaucoup plus court que pour spaceman
+   $ cap staging setup     <--- sera très long et verbeux
 
      Si tout c'est bien déroulé, les dernières lignes à l'écran devraient ressembler à ceci:
 
@@ -94,14 +94,6 @@ Pour ce faire, effectuer les commandes suivantes:
 
      $ cp ../spaceman_data_old_production.tar.gz .
      $ cap staging deploy
-
-
-   Le staging permet de vérifier que tout fonctionne correctement avant d'effectuer le même processus pour l'environnement de production.
-
-   $ cap staging setup          <--- sera très long et très verbeux
-
-   $ cp ../spaceman_data_old_production.tar.gz .
-   $ cap staging deploy         <--- assez verbeux et moins long
 
 7. L'outil capistrano produit un fichier log situé dans Dev/spaceman/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
 

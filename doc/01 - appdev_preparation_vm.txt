@@ -87,6 +87,7 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
 
     $ cp id_rsa.pub authorized_keys
     $ chmod 600 authorized_keys
+    $ cd ..
 
 10. Téléchargement de l'outil d'installation:
 
@@ -129,7 +130,7 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
 
    ---- Staging ----
 
-   Modifier les variables afin qu'elles représentent les identifiants locaux. Les valeurs sont les suivantes:
+   Dans le fichier ~/Dev/staging.rb, modifier les variables afin qu'elles représentent les identifiants locaux. Les valeurs sont les suivantes:
 
    set :server,    "appdev"
    set :app_user,  "stageuser"
@@ -141,7 +142,7 @@ Les éléments suivants doivent être ajustés dans le texte pour correspondre a
 
    ---- Production ----
 
-   Modifier les variables afin qu'elles représentent les identifiants locaux du serveur en production. Les valeurs sont les suivantes:
+   Dans le fichier ~/Dev/production.rb, modifier les variables afin qu'elles représentent les identifiants locaux du serveur en production. Les valeurs sont les suivantes:
 
    set :server,    "appserv"
    set :app_user,  "userapp"

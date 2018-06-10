@@ -101,7 +101,7 @@ namespace :db do
                 invoke! 'db:migrating'
 
               else
-                puts "--> Error: Files migration.txt and ./#{psql_file} not found"
+                puts "--> Error: Files migration.txt and/or ./#{psql_file} not found"
                 execute :pwd
               end
 
