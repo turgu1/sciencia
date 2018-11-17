@@ -1,0 +1,57 @@
+Procédure de mise a niveau mineure de Sciencia et de Spaceman.
+
+La procédure ci-dessous est spécifique suite au déploiement initial des applications Sciencia et Spaceman effectué selon les étapes documentées dans les autre documents de ce répertoire. Il est nécessaire de suivre les étapes indiquées.
+
+Dans les paragraphes qui suivent, on explique la procédure pour sciencia. Pour spaceman, elle est similaire. Simplement remplacer "sciencia" par "spaceman".
+
+
+
+1. Aviser les utilisateurs que l'application sciencia sera mise à niveau et qu'un prochain courriel leur indiquera quand l'application sera de nouveau disponible. Leur indiquer le moment où le changement s'effectuera (leur laisser au moins 24 heures d'avis pour leur permettre de compléter des changements).
+
+2. Une fois arrivé au moment indiqué aux usagers pour faire la mise à niveau, on doit mettre à jour la copie de l'environnement de développement de l'application. Les changements se trouvent dans la version de l'application maintenue sur le site github.
+
+Pour ce faire, effectuer les commandes suivantes:
+
+   [ On est dans userdev@appdev]
+
+   $ cd ~/Dev/sciencia
+
+   $ git pull origin master
+
+3. Staging: Effectuer les commandes suivantes:
+
+   Le staging permet de vérifier que tout fonctionne correctement avant d'effectuer le même processus pour l'environnement de production.
+
+   $ cap staging deploy         <--- assez verbeux et assez long
+
+     Si tout c'est bien déroulé, les dernières lignes à l'écran devraient ressembler à ceci:
+
+        00:31 deploy:log_revision
+              01 echo "Branch master (at ecc300d873ae98a38a627af0ccbc30be6df94895) deployed as release 20180607142139 by …
+            ✔ 01 stageuser@appdev 0.050s
+
+     Sinon, il faudra corriger le problème selon les informations apparaissant à l'écran. 
+     On peut reprendre le déploiement avec la commande suivante:
+
+     $ cap staging deploy
+
+
+4. L'outil capistrano produit un fichier log situé dans Dev/sciencia/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
+
+5. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en staging par l'entremise d'un fureteur web en utilisant l'url https://appdev:41777 (pour spaceman: https://appdev:4577)
+
+   Demander à un ou des utilisateurs de sciencia d'effectuer quelques essais avec la version en staging (https://appdev:41777 pour spaceman: https://appdev:4577) afin de s'assurer que le tout fonctionne bien. Leur mentionner qu'il s'agit d'un test et que la disponibilité de la nouvelle version sur le serveur appserv leur sera communiqué sous peu. 
+
+   --> Ils devront autoriser le site dans le fureteur étant donné le certificat bidon.
+
+6. Production: Effectuer la commande suivante:
+
+   Voir le paragraphe 3 pour la résolution de problèmes avec les commandes qui suivent. 
+
+   $ cap production deploy         <--- assez verbeux et assez long
+
+7. L'outil capistrano produit un fichier log situé dans Dev/sciencia/log/capistrano.log . Il serait utile de le parcourir pour voir s'il y a eu des erreurs d'exécution.
+
+8. Si tout s'est bien déroulé, il devrait être possible de se connecter à la nouvelle application en production par l'entremise d'un fureteur web en utilisant l'URL https://appserv:41777 (pour spaceman: https://appserv:4577)
+
+9. Il est maintenant temps d'aviser les utilisateur que l'application est à nouveau opérationnelle. 
