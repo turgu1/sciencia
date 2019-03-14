@@ -16,6 +16,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :trackable
 
   before_save do |entry|
+    # A person cannot get a "user" role if he is not already defined in an organisation in the database.
+    # This role allow a user to create new document entries. As such he cannot do it if he is not
+    # part of an organisation.
     entry.person = Person.where(email: entry.email).take
     if entry.person.nil?
       remove_role(entry, :user)
