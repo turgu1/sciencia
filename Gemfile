@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 ruby                                '2.5.1'
-gem 'rails',                        '5.2.0'
+gem 'rails',                        '5.2.2.1' # was 5.2 (GT)
 
 gem 'pg',                           '~> 1.0.0'
 gem 'sass-rails',                   '~> 5.0'
@@ -14,7 +14,7 @@ gem 'uglifier',                     '>= 1.3.0'
 gem 'coffee-rails',                 '~> 4.2'
 gem 'jquery-rails',                 '~> 4.3.1'
 gem 'jbuilder',                     '~> 2.5'
-gem 'bootstrap-sass',               '~> 3.3.7'
+gem 'bootstrap-sass',               '~> 3.4.1'  # was 3.3.7 (GT)
 gem 'bootstrap-datepicker-rails',   '~> 1.8.0.1'
 gem 'font-awesome-rails',           '~> 4.7.0'
 gem 'bootstrap-wysihtml5-rails',    '~> 0.3.3.8'
