@@ -18,7 +18,7 @@ gem 'bootstrap-sass',               '~> 3.4.1'  # was 3.3.7 (GT)
 gem 'bootstrap-datepicker-rails',   '~> 1.8.0.1'
 gem 'font-awesome-rails',           '~> 4.7.0'
 gem 'bootstrap-wysihtml5-rails',    '~> 0.3.3.8'
-gem 'devise',                       '~> 4.4.3'
+gem 'devise',                       '~> 4.6.1' # was 4.4.3 (GT)
 gem 'cancancan',                    '~> 2.1.3'
 gem 'haml-rails',                   '~> 1.0.0'
 gem 'simple_form',                  '~> 4.0.1'
