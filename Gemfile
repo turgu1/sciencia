@@ -21,7 +21,7 @@ gem 'bootstrap-wysihtml5-rails',    '~> 0.3.3.8'
 gem 'devise',                       '~> 4.7.1' # was 4.6.1 (GT)
 gem 'cancancan',                    '~> 2.1.3'
 gem 'haml-rails',                   '~> 1.0.0'
-gem 'simple_form',                  '~> 4.0.1'
+gem 'simple_form',                  '~> 5.0.0'
 gem 'cocoon',                       '~> 1.2.11'
 gem 'jquery-datatables-rails',      '~> 3.4.0'
 gem 'activemodel-serializers-xml',  '~> 1.0.2'
