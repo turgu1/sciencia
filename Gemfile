@@ -53,7 +53,7 @@ end
 group :development, :test do
   gem 'factory_bot_rails',          '~> 4.8.2', require: false
   gem 'rspec-rails'
-  gem 'puma',                         '~> 3.11'
+  gem 'puma',                         '~> 3.12'
 end
 
 group :production do
